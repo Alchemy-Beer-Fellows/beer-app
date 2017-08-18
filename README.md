@@ -25,6 +25,10 @@ Our algorithms will eliminate the beers that do not meet all of your needs.
 User is presented with three simple parameters and chooses their desired range for each.
 The database includes beer styles and data on their color, alcohol content, and bitterness.
 
-
 *Benefits*
 Personalized beer style recommendations based on your preferences.
+
+
+# Stretch Goal
+
+Fourth About-the-Team page
