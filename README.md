@@ -40,3 +40,31 @@ Fourth About-the-Team page
   
  *Output Ideas* 
   Beer in venn diagram
+
+
+
+objects:
+-	current state object
+o	name
+o	preferences
+-	Database
+o	beers
+	constructor
+	properties
+•	id ###
+•	stylename
+•	bitterness
+•	color
+•	abv
+•	methods
+o	isInRange
+	returns true or false
+o	
+o	properties
+o	method
+	sorting function 
+•	for each parameter
+•	returns array of good beers
+	matching function  for each pair of parameters
+	matching for all three
+•	compared matched ^
