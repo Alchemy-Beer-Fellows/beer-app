@@ -4,6 +4,9 @@
 - [Team Information](#team-information)
 - [Pitch](#pitch)
 - [Stretch Goals](#stretch-goals)
+- [User Stories](#user-stories)
+- [Tentative Schedule](#tentative-schedule)
+- [Object Model Outline](#object-model-outline)
 
 
 # Team Information
