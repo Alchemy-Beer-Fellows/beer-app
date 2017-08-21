@@ -1,1 +1,4 @@
-alert('testing: app.js online');
+name.addEventListener('click', function(){
+    alert('ive been clicked');
+});
+
