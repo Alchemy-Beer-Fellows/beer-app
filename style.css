@@ -15,9 +15,9 @@ h1{
     text-align: center;
     font-family: 'BellBottom';
     color: white;
-    text-shadow: -10px 10px 0px #E55102,
-                 -20px 20px 0px #FFAE2E,
-                 -30px 30px 0px #FF9D0F;
+    text-shadow: -10px 10px 0px rgba(229, 81, 2, 1), 
+                 -20px 20px 0px rgba(255, 174, 46, .75),
+                 -30px 30px 0px rgba(255, 157, 15, .5);
     font-size: 90pt;
 }
 
@@ -27,12 +27,12 @@ h3{
     font-size: 20pt;
 }
 
-.freeTrial{
+/* .freeTrial{
     display: block;
     border: 2px solid black;
     background-color: grey;
     text-align: center;
-}
+} */
 nav {
     max-height: 150px;
     max-width: 38px;
@@ -67,4 +67,9 @@ nav img {
    margin: 0 auto;
    text-align: center;
    padding: 5%;
+}
+
+#right{
+    display: block;
+    float: right;
 }
