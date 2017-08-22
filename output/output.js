@@ -34,7 +34,8 @@ function Beer(style, color, abv, bitter, idNum) { // beer object constructor
     this.idNum = idNum;
     this.color = color; // 2 element array with [min, max] values
     this.abv = abv; // 2 element array with [min, max] values
-    this.bitterness = bitter; // 2 element array with [min, max] values
+    this.bitterness = bitter;// 2 element array with [min, max] values
+    // this.image = image;
     // this.example = examples;
 
     beers.push(this);
@@ -146,6 +147,10 @@ var database = {
     abv_bitterness: [],
     goodAll: [],
 
+   elNewBeers: document.getElementById('button'),
+
+
+
     findBeersWithin: function(parameter, min, max) { // finds all beers within the given parameters and returns their (styles or ids?) in an array
         var goodBeers = []; // I'm thinking the array should hold idNum or style for better processing
         for (var i = 0; i < beers.length; i++) { // When the final beers are 
@@ -171,9 +176,6 @@ var database = {
                 }
             }
         }
-
-        return goodBeersAB;
-
 
         var firstParam,
             secondParam;
@@ -210,9 +212,46 @@ var database = {
         this.goodAll = bestBeers;
         return this.goodAll;
 
+    },
+
+    fillInChoice: function (i, beer){
+        var elChoice = document.getElementById('choice' + i);
+        elChoice.innerHTML = '';
+    elChoice.setAttribute( 'id', 'choice' + i )
+        var elH5 = document.createElement('h5');
+        elH5.innerText = beer.style;
+        elChoice.appendChild(elH5);
+
+        var elUl = document.createElement('ul');
+        
+        var elLi = document.createElement('li');
+        elLi.innerText = 'Color: ' + beer.color;
+        elUl.appendChild(elLi);
+
+        var elLi = document.createElement('li');
+        elLi.innerText = 'ABV: ' + beer.abv;
+        elUl.appendChild(elLi);
+
+        var elLi = document.createElement('li');
+        elLi.innerText = 'Bitterness: ' + beer.bitterness;
+        elUl.appendChild(elLi);
+        elChoice.appendChild(elUl);
+
+        var elImage = document.createElement('img');
+        elImage.setAttribute( 'src', beer.image);
+        elChoice.appendChild(elImage);
+    },
+
+    getChoices: function (){
+        var threeBeers = [];
+        for (var i =0; i < 3; i ++){
+            var randomPick = Math.floor(Math.random() * (this.goodAll.length));
+            var randomIndex = this.goodAll[randomPick];
+            threeBeers[i]  = beers[randomIndex];
+        }
+        return threeBeers;
     }
 }
-
 
 function test() { // tests all current defined methods for database object
     user.name = 'Ned Stark',
