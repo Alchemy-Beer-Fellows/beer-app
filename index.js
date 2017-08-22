@@ -1,5 +1,10 @@
 function getLS(){
+    if( !localStorage.getItem('name')){
+        return [];
+    }
+    else{
     return JSON.parse(localStorage.getItem('name'))
+    }
 };
 
 var names =[];

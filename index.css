@@ -4,8 +4,9 @@
 }
 
 html, body {
+    border: 12px double black;
     margin: 0;
-    padding: 0;
+    padding: 45px;
     width: auto;
     height: 100%;
     background-color: #82D5F0; /*temp value*/
@@ -15,17 +16,23 @@ h1{
     text-align: center;
     font-family: 'BellBottom';
     color: white;
-    text-shadow: -10px 10px 0px rgba(166, 0, 0, 1), 
-                 -20px 20px 0px rgba(166, 66, 0, .75),
-                 -30px 30px 0px rgba(166, 98, 0, .25),
-                 -40px 40px 0px rgba(166, 129, 0, .5);
-    font-size: 90pt;
+    text-shadow: -10px 10px 0px rgba(255, 0, 0, 1), 
+                 -20px 20px 0px rgba(255, 89, 0, .75),
+                 -30px 30px 0px rgba(255, 145, 0, .25),
+                 -40px 40px 0px rgba(255, 210, 0, .5);
+    font-size: 100pt;
+    transform: rotate(360deg);
+    transition: transform 1s ease-in-out;
+}
+
+h1:hover {
+     transform: rotate(0deg);
 }
 
 h3{
     text-align: center;
     font-family: 'Baloo Bhaijaan', cursive;
-    font-size: 20pt;
+    font-size: 30pt;
 }
 
 h4{
