@@ -15,25 +15,12 @@ h1{
     text-align: center;
     font-family: 'BellBottom';
     color: white;
-    text-shadow: -10px 10px 0px rgba(229, 81, 2, 1), 
-                 -20px 20px 0px rgba(255, 174, 46, .75),
-                 -30px 30px 0px rgba(255, 157, 15, .5);
+    text-shadow: -10px 10px 0px rgba(166, 0, 0, 1), 
+                 -20px 20px 0px rgba(166, 66, 0, .75),
+                 -30px 30px 0px rgba(166, 98, 0, .25),
+                 -40px 40px 0px rgba(166, 129, 0, .5);
     font-size: 90pt;
-    /* animation-name: flash;
-    animation-duration: 1s;
-    animation-timing-function: ease;
-     animation-direction: alternate;
-    animation-fill-mode: forwards;  */
 }
-
-/* @keyframes flash{
-    from{
-        opacity: 1;
-    }
-    to{
-        opacity: 0;
-    }
-} */
 
 h3{
     text-align: center;
