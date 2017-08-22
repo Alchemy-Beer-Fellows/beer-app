@@ -1,11 +1,12 @@
 html,
 body {
+    text-align: center;
     margin: 0;
     padding: 0;
     width: auto;
     height: 100%;
-    background: tan;
-    /*testing purposes; temporary*/
+    background: #FF9D0F;
+
 }
 
 nav {
@@ -35,3 +36,11 @@ nav img {
     width: 100%;
     height: auto;
 }
+
+/* text-align: center;
+font-family: 'BellBottom';
+color: white;
+text-shadow: -10px 10px 0px #E55102,
+-20px 20px 0px #FFAE2E,
+-30px 30px 0px #FF9D0F;
+font-size: 90pt; */
