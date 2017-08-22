@@ -222,8 +222,13 @@ var database = {
 function test() { // tests all current defined methods for database object
     user.name = 'Ned Stark',
         user.currentPreferences.abv = [2, 3];
+<<<<<<< HEAD
     user.currentPreferences.bitterness = [3, 5];
     user.currentPreferences.color = [3, 5];
+=======
+    user.currentPreferences.bitterness = [1, 3];
+    user.currentPreferences.color = [4, 5];
+>>>>>>> origin
 
 
     compileBeers();
