@@ -35,6 +35,10 @@ html, body {
     align-content: center;
 }
 
+#mainBeer img{
+    height:
+}
+
 #mainBeer div{
     width: 30%;
     height: 85%;
@@ -46,10 +50,10 @@ html, body {
 
 #button{
     font-family: 'Baloo Bhaijaan', cursive;
-    background-color:#E5DAD8;
+    /* background-color:#E5DAD8; */
     width: 20%;
     height: 30px;
-    border: solid black 1px;
+    /* border: solid black 1px; */
     margin: auto;
     padding: 0.2em;
     display: flex;

@@ -237,21 +237,33 @@ var database = {
         elUl.appendChild(elLi);
         elChoice.appendChild(elUl);
 
-        var elImage = document.createElement('img');
-        elImage.setAttribute( 'src', beer.image);
-        elChoice.appendChild(elImage);
+        // var elImage = document.createElement('img');
+        // elImage.setAttribute( 'src', beer.image);
+        // elChoice.appendChild(elImage);
     },
 
     getChoices: function (){
         var threeBeers = [];
-        for (var i =0; i < 3; i ++){
+        for (var i = 0; i < 3; i ++){
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
             threeBeers[i]  = beers[randomIndex];
         }
         return threeBeers;
+    },
+
+    displayChoices: function (){
+            event.preventDefault();
+        var threeBeers = this.getChoices();
+        for (var i = 1; i <= 3; i ++){
+            this.fillInChoice(i, threeBeers[i -1]);
+        }
     }
 }
+
+var moreBeer = document.getElementById('button');
+
+moreBeer.addEventListener('click', database.displayChoices.bind(database));
 
 function test() { // tests all current defined methods for database object
     user.name = 'Ned Stark',
