@@ -1,22 +1,31 @@
 var user = {
+    
+
+
     name: '',
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
-        color: ['min', 'max'],
-        abv: [],
-        bitterness: []
+        var minC = ;
+        var maxC = ;
+        var minA = ;
+        var maxA = ;
+        var minB = ;
+        var maxB = ;
+        color: [minC, maxC],
+        abv: [minA, maxA],
+        bitterness: [minB, maxB]
     },
 
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
-    // submit: document.getElementById(),
+    submit: document.getElementById(),
 
-    // prefHandler: function() {
-    //     user.currentPreferences
-    //     preferencesToLS('beer', this.currentPreferences);
-    // },
+    prefHandler: function() {
+        user.currentPreferences
+        preferencesToLS('beer', this.currentPreferences);
+    },
     getPreviousPreferences: function() {
         return JSON.parse(localStorage.getItem('preferences'));
     },
@@ -29,7 +38,7 @@ var user = {
         localStorage.setItem('preferences', str);
     }
 }
-// user.submit.addEventListener('click', prefHandler, true);
+user.submit.addEventListener('click', prefHandler, true);
 
 var beers = []; // array for beer objects
 function Beer(style, color, abv, bitter, idNum) { // beer object constructor
@@ -224,7 +233,7 @@ var database = {
 
 function test() { // tests all current defined methods for database object
     user.name = 'Ned Stark',
-        user.currentPreferences.abv = [0, 7];
+    user.currentPreferences.abv = [0, 7];
     user.currentPreferences.bitterness = [3, 5];
     user.currentPreferences.color = [0, 17];
 
