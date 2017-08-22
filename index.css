@@ -1,13 +1,15 @@
+
 @font-face{
     font-family: 'BellBottom';
     src: url('BellBottom.ttf');
-}
+
 
 html, body {
     margin: 0;
     padding: 0;
     width: auto;
     height: 100%;
+
     background-color: #82D5F0; /*temp value*/
 }
 
@@ -98,4 +100,3 @@ nav img {
 
 #right1{
     float: right;
-}
