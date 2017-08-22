@@ -1,20 +1,13 @@
-
-
 @font-face{
     font-family: 'BellBottom';
-    src: url('BellBottom.ttf');
-
+    src: url('./assets/BellBottom.ttf');
+}
 
 html, body {
-
-html,
-body {
     margin: 0;
     padding: 0;
     width: auto;
     height: 100%;
-
-
     background-color: #82D5F0; /*temp value*/
 }
 
@@ -61,13 +54,7 @@ h4{
     background-color:#C4C4C4;
     padding: 3px;
     text-decoration: none;
-
 } 
-
-    background-color: brown;
-    /*temp value*/
-}
-
 
 nav {
     max-height: 150px;
@@ -112,4 +99,4 @@ nav img {
 
 #right1{
     float: right;
-
+}
