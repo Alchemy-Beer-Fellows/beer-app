@@ -1,12 +1,73 @@
+
+
+@font-face{
+    font-family: 'BellBottom';
+    src: url('BellBottom.ttf');
+
+
+html, body {
+
 html,
 body {
     margin: 0;
     padding: 0;
     width: auto;
     height: 100%;
+
+
+    background-color: #82D5F0; /*temp value*/
+}
+
+h1{ 
+    text-align: center;
+    font-family: 'BellBottom';
+    color: white;
+    text-shadow: -10px 10px 0px rgba(229, 81, 2, 1), 
+                 -20px 20px 0px rgba(255, 174, 46, .75),
+                 -30px 30px 0px rgba(255, 157, 15, .5);
+    font-size: 90pt;
+    /* animation-name: flash;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+     animation-direction: alternate;
+    animation-fill-mode: forwards;  */
+}
+
+/* @keyframes flash{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+} */
+
+h3{
+    text-align: center;
+    font-family: 'Baloo Bhaijaan', cursive;
+    font-size: 20pt;
+}
+
+h4{
+    text-align: center;
+    font-family: 'Baloo Bhaijaan', cursive;
+    font-size: 15pt;
+}
+
+ #freeTrial{
+    display: inline-block;
+    border: 2px solid black;
+    margin: auto;
+    background-color:#C4C4C4;
+    padding: 3px;
+    text-decoration: none;
+
+} 
+
     background-color: brown;
     /*temp value*/
 }
+
 
 nav {
     max-height: 150px;
@@ -35,3 +96,20 @@ nav img {
     width: 100%;
     height: auto;
 }
+
+ 
+#main{
+    /* border: 2px solid black; */
+   display: block;
+   margin: 0 auto;
+   text-align: center;
+   padding: 5%;
+}
+
+#right{
+    float: right;
+}
+
+#right1{
+    float: right;
+
