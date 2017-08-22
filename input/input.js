@@ -1,12 +1,8 @@
-alert('.js active');
-
 
 var user = {
     name: '',
 
-    //currentPreferences: [/*temprorary values*/'colorMin', 'colorMax', 'abvMin', 'abvMax', 'bitterMin', 'bittermax'], // possibly an array with six values, holds the max and min values of each beer parameter
-                            // could also separate into three arrays with two-elements each, one array for each parameter
-                            // might even be better as an object literal
+   
     currentPreferences: {   // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
         color: ['min', 'max'],
         abv: [],
@@ -23,20 +19,6 @@ var user = {
 
     }
 }
-
-
-// /*beer data for constructor loop (database.compileBeers() method)*/
-// var styles =       ['water', '100% EtOH', 'beer']; // string
-// var idNums =       [ 0     ,  1         ,  2    ];
-// var colors =       [ 0     ,  0         ,  18   ]; // number (scale [0-40] *?* not sure...)
-// var abvs =         [ 0     ,  100       ,  7    ]; // number percentage (do not use '%' char), [0-11] *?* can't remember exact ranges on these
-// var bitternesses = [ 0     ,  5         ,  2    ]; // on the perceived bitterness scale [1-5] *?*
-// var examples = [ ['aquafina', 'dasani', 'ice mountain'],  // water
-//                  ['biofuel', 'ethanol', 'everclear'],  // 100% EtOH
-//                  ['guinness', 'hefe', 'screaming banshee'] ] // beer
-
-
-
 
 var beers = [];      // array for beer objects
 function Beer (style, color, abv, bitter, idNum) {      // beer object constructor
@@ -187,6 +169,9 @@ var database = {
             }
         }
 
+        return goodBeersAB;
+
+
         var firstParam,
             secondParam;
         if(parameterA === 'color' || parameterB === 'color') {
@@ -223,16 +208,9 @@ var database = {
         }
         this.goodAll = bestBeers;
         return this.goodAll;
+
     }
 }
-
-
-
-
-
-
-
-
 
 
 function test() {               // tests all current defined methods for database object
@@ -241,12 +219,19 @@ function test() {               // tests all current defined methods for databas
     user.currentPreferences.bitterness = [3,5];
     user.currentPreferences.color = [0, 17];
 
+
+    database.compileBeers();
+
     compileBeers();
+
     console.log(database.beers);
     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv'));               // should return 0
     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness'));     // should return empty array
+
+
     console.log('color + abv + bitterness: ' + database.findBeersWithAll());
+
 }
 
 test();
