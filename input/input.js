@@ -56,7 +56,7 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
     // }
 
-    //                      name              color  abv  bitt  ID
+    //         name              color  abv  bitt  ID
     new Beer('Lite American Lager', '1', '2', '1', '01');
     new Beer('American Lager', ' 1', '3', '1', '02');
     new Beer('Cream Ale', '1', '3', '1', '03');
@@ -169,7 +169,7 @@ var database = {
             goodBeersB,
             goodBeersAB = [],
 
-            goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
+        goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
         goodBeersB = this.findBeersWithin(parameterB, user.currentPreferences[parameterB][0], user.currentPreferences[parameterB][1]);
 
         for (var i = 0; i < goodBeersA.length; i++) {
@@ -179,10 +179,7 @@ var database = {
                 }
             }
         }
-
-        return goodBeersAB;
-
-
+    
         var firstParam,
             secondParam;
         if (parameterA === 'color' || parameterB === 'color') {
@@ -224,9 +221,9 @@ var database = {
 
 function test() { // tests all current defined methods for database object
     user.name = 'Ned Stark',
-        user.currentPreferences.abv = [0, 7];
+        user.currentPreferences.abv = [2, 3];
     user.currentPreferences.bitterness = [3, 5];
-    user.currentPreferences.color = [0, 17];
+    user.currentPreferences.color = [3, 5];
 
 
     compileBeers();
