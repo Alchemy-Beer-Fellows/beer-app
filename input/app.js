@@ -37,7 +37,7 @@ var user = {
 
 
 
-//                      name              color  abv  bitt  ID
+
 var beers = [];      // array for beer objects
 function Beer (style, color, abv, bitter, idNum) {      // beer object constructor
     this.style = style; // string name eg 'IPL'
@@ -63,6 +63,7 @@ function compileBeers() {                  // use Beer constructor to put beers 
     //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
     // }
     
+//                      name              color  abv  bitt  ID
 var beer = new Beer( 'Lite American Lager', '1', '2', '1', '01');
 var beer = new Beer( 'American Lager', ' 1', '3', '1', '02');
 var beer = new Beer( 'Cream Ale', '1', '3', '1', '03');
@@ -155,6 +156,10 @@ var beer = new Beer( 'Belgian Dark Strong Ale', '4', '5', '2', '82');
 
 /*main object literal, holding beer object array, methods to sort, and methods to push to local storage*/
 var database = {
+    color_abv: [],
+    color_bitterness: [],
+    abv_bitterness: [],
+    goodAll: [],
 
     findBeersWithin: function(parameter, min, max) {     // finds all beers within the given parameters and returns their (styles or ids?) in an array
         var goodBeers = [];                                     // I'm thinking the array should hold idNum or style for better processing
@@ -181,7 +186,43 @@ var database = {
                 }
             }
         }
+
+        var firstParam,
+            secondParam;
+        if(parameterA === 'color' || parameterB === 'color') {
+            firstParam = 'color';
+            if(parameterA === 'abv' || parameterB === 'abv') {
+                secondParam = 'abv';
+            }
+            else {
+                secondParam = 'bitterness';
+            }
+        }
+        else {
+            firstParam = 'abv';
+            secondParam = 'bitterness';
+        }
+        database[firstParam + '_' + secondParam] = goodBeersAB;
+
         return goodBeersAB;
+    },
+
+    findBeersWithAll: function() {
+        var bestBeers = [];
+        for(var i = 0; i < this.color_abv.length; i++) {
+            for(var j = 0; j < this.color_bitterness.length; j++) {
+                if(this.color_abv[i] === this.color_bitterness[j]) {
+                    bestBeers.push(this.color_abv[i]);
+                }
+            }
+        }
+        for(var i = 0; i < bestBeers.length; i++) {
+            if(!this.abv_bitterness.includes(bestBeers[i])) {
+                bestBeers.splice(i, 1);
+            }
+        }
+        this.goodAll = bestBeers;
+        return this.goodAll;
     }
 }
 
@@ -205,6 +246,7 @@ function test() {               // tests all current defined methods for databas
     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv'));               // should return 0
     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness'));     // should return empty array
+    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
 }
 
 test();
