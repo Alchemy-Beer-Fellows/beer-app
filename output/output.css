@@ -23,7 +23,15 @@ html, body {
 }
 
 #pref p{
-    width: 12%;
+    width: 14%;
+}
+
+/* Hey Morgan! just added this for the preferences display. I shouldn't mess with anything, but feel free to delete it if it does */
+.preference {
+    text-align: right;
+}
+.range {
+    text-align: left;
 }
 
 #mainBeer{
@@ -36,7 +44,7 @@ html, body {
 }
 
 #mainBeer img{
-    height:
+    height:;
 }
 
 #mainBeer div{
@@ -47,6 +55,13 @@ html, body {
     border: 1px solid black;
     padding: 5px;
 }
+
+#mainBeer>h2{
+    width: 100%;
+    text-align: center;
+    padding-top: 4em;
+}
+
 
 #button{
     font-family: 'Baloo Bhaijaan', cursive;
@@ -121,4 +136,8 @@ nav ul {
 nav img {
     width: 100%;
     height: auto;
+}
+
+.hidden {
+    display: none;
 }
