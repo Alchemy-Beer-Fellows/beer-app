@@ -133,6 +133,30 @@ h1{
     display: initial;
 }
 
+#past-results {
+    display: flex;
+    flex-direction: column;
+}
+
+.previous-beer-preferences, .previous-beer-lists {
+    display: flex;
+    justify-content: space-around;
+}
+
+.previous-beer-lists h5 {
+    text-align: center;
+}
+
+.alt-beer:hover div {
+    
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    top: -12px;
+    right: -146px;
+    display: initial;
+}
+
 .hidden {
     display: none;
 }

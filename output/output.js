@@ -10,6 +10,7 @@ var user = {
     },
 
     allNames: [],
+    thisUserPrevPrefs: [],
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
@@ -41,7 +42,11 @@ var user = {
 
     getCurrentPreference: function() {
         this.getPreviousPreferences();
-        this.currentPreferences= this.previousPreferences.slice(-1)[0];
+        this.currentPreferences = this.previousPreferences.slice(-1)[0];
+    },
+
+    switchUserInstance: function(index) {
+        user.currentPreferences = user.thisUserPrevPrefs[index];
     },
 
     preferenceRange: function(property) {
@@ -52,6 +57,7 @@ var user = {
         }
         return innerText;
     },
+
     showPreferences: function() {
         var elColor = document.getElementById('color');
         elColor.innerText = this.preferenceRange('color');
@@ -60,8 +66,30 @@ var user = {
         var elBitter = document.getElementById('bitter');
         elBitter.innerText = this.preferenceRange('bitterness');
 
-    }
-}
+    },
+
+    findUsersPreviousPreferences: function() { // fills thisUsersPrevPrefs starting from most recent
+        if(user.name) {
+            for(var i = this.previousPreferences.length - 2; i >= 0; i--){
+                if(this.previousPreferences[i]['name'] === user.name){
+                    this.thisUserPrevPrefs.push(this.previousPreferences[i]);
+                }
+            }
+        }
+        for(var i = 0; i < this.thisUserPrevPrefs.length - 1; i++) {
+            for(var j = (i + 1); j < this.thisUserPrevPrefs.length; j++) {
+                if(this.thisUserPrevPrefs[i].color[0] === this.thisUserPrevPrefs[j].color[0] &&
+                   this.thisUserPrevPrefs[i].color[1] === this.thisUserPrevPrefs[j].color[1] &&
+                   this.thisUserPrevPrefs[i].abv[0] === this.thisUserPrevPrefs[j].abv[0] &&
+                   this.thisUserPrevPrefs[i].abv[1] === this.thisUserPrevPrefs[j].abv[1] &&
+                   this.thisUserPrevPrefs[i].bitterness[0] === this.thisUserPrevPrefs[j].bitterness[0] &&
+                   this.thisUserPrevPrefs[i].bitterness[1] === this.thisUserPrevPrefs[j].bitterness[1])  {
+                    this.thisUserPrevPrefs.splice(j, 1);
+                }
+            }
+        }
+    },
+};
 // user.submit.addEventListener('click', prefHandler, true);
 
 var beers = []; // array for beer objects
@@ -363,18 +391,89 @@ var database = {
         this.renderAlternative('AB', 'color_abv');
         this.renderAlternative('BC', 'color_bitterness');
         this.renderAlternative('AC', 'abv_bitterness');
+    },
+
+    displayPreviousInstance: function(index, elContainer) {
+        
+        user.switchUserInstance(index);
+        this.compilePreferredBeers();
+
+        elContainer.setAttribute('class', 'container');
+
+        var elSubContainer = document.createElement('div');
+        elSubContainer.setAttribute('class', 'sub-container');
+            var elPreferencesDiv = document.createElement('div');
+            elPreferencesDiv.setAttribute('class', 'previous-beer-preferences');
+                var elPColor = document.createElement('p');
+                elPColor.innerText = "Color:  " + user.thisUserPrevPrefs[index].color[0] + ' / ' + user.thisUserPrevPrefs[index].color[1];
+                elPreferencesDiv.appendChild(elPColor);
+
+                var elPAbv = document.createElement('p');
+                elPAbv.innerText = "ABV:  " + user.thisUserPrevPrefs[index].abv[0] + ' / ' + user.thisUserPrevPrefs[index].abv[1];
+                elPreferencesDiv.appendChild(elPAbv);
+
+                var elPBitter = document.createElement('p');
+                elPBitter.innerText = "Bitterness:  " + user.thisUserPrevPrefs[index].bitterness[0] + ' / ' + user.thisUserPrevPrefs[index].bitterness[1];
+                elPreferencesDiv.appendChild(elPBitter);
+            elSubContainer.appendChild(elPreferencesDiv);
+
+            var elResultsDiv = document.createElement('div');
+            elResultsDiv.setAttribute('class', 'previous-beer-lists')
+                var elResultsColumn = [];
+                for(var i = 0; i < 3; i++) {
+                    elResultsColumn[i] = document.createElement('div');
+                }
+                    for(var i = 0; i < this.goodAll.length; i++){
+                        var elDiv = document.createElement('div');
+                        elDiv.setAttribute('class', 'past-beer');
+                            var beerIndex = this.goodAll[i];
+                            var elH5 = document.createElement('h5');
+                            elH5.innerText = beers[beerIndex].style;
+                            elDiv.appendChild(elH5);
+
+                            var elPopUp = document.createElement('div');
+                            elPopUp.setAttribute('class', 'hidden');
+                                var elColor = document.createElement('p');
+                                elColor.innerText = 'Color: ' + beers[beerIndex].color;
+                                elPopUp.appendChild(elColor);
+
+                                var elAbv = document.createElement('p');
+                                elAbv.innerText = 'ABV: ' + beers[beerIndex].abv;
+                                elPopUp.appendChild(elAbv);
+
+                                var elBitter = document.createElement('p');
+                                elBitter.innerText = 'Bitterness: ' + beers[beerIndex].bitterness;
+                                elPopUp.appendChild(elBitter);
+                            elDiv.appendChild(elPopUp);
+                        elResultsColumn[2 - (i+1) % 3].appendChild(elDiv);
+                    }
+                for(var i = 0; i < 3; i++) {
+                    elResultsDiv.appendChild(elResultsColumn[i]);
+                }
+            elSubContainer.appendChild(elResultsDiv);
+        elContainer.appendChild(elSubContainer);
+    },
+
+    displayAllPrevious: function() {
+        var elPastResults = document.getElementById('past-results');
+        for(var i = 0; i < user.thisUserPrevPrefs.length; i++) {
+            this.displayPreviousInstance(i, elPastResults);
+        }
     }
+
 };
 
 
 function onRunOutput() {
     user.getPreviousNames();
     user.getCurrentPreference();
+    user.findUsersPreviousPreferences();
     user.showPreferences();
     compileBeers();
     database.compilePreferredBeers();
     database.displayChoices();
     database.displayAlternatives();
+    database.displayAllPrevious();
     var moreBeer = document.getElementById('button');
     moreBeer.addEventListener('click', database.displayChoices.bind(database));
 
