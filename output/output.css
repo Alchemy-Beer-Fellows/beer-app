@@ -12,6 +12,10 @@ html, body {
     border: 12px double black;
 }
 
+h3{
+    font-family: 'Sigmar One', cursive;
+    text-align: center;
+}
 #pref{
     background-color: #E5DAD8;
     text-align: center;
@@ -31,9 +35,8 @@ html, body {
 .preference {
     text-align: right;
     font-family: 'Sigmar One', cursive;
-    font-size: 15pt;
+    font-size: 10pt;
 }
-
 
 .range {
     text-align: left;
@@ -46,12 +49,17 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-content: center;
+    /* text-align: center; */
+
 }
 
-#mainBeer img{
+/* #mainBeer img{
     height:;
-}
+} */
 
+ul{
+    list-style-type: none;
+}
 #mainBeer div{
     width: 30%;
     height: 85%;
@@ -59,7 +67,8 @@ html, body {
     margin: 1em 0;
     border: 1px solid black;
     padding: 5px;
-    background-image: url('./assest/wood.jpg');
+    background-image: url('../assets/wood.jpg');
+    font-family: 'Cabin Sketch', cursive;
 }
 
 #mainBeer>h2{
@@ -90,12 +99,17 @@ h2{
 #bottomBeer{
     width: 80%;
     height: 50%;
+    overflow: auto;
     display: flex;
     justify-content: space-between;
     align-content: center;
     margin: 10em auto;
     border: 12px double black;
     padding: 45px;
+    background-image: url('../assets/wood.jpg');
+    font-size: 20pt;
+    font-family: 'Cabin Sketch', cursive;
+
 }
 
 #bottomBeer div{
@@ -108,7 +122,7 @@ h3{
 }
 
 h1{
-       text-align: center;
+    text-align: center;
     font-family: 'BellBottom';
     color: white;
     text-shadow: -10px 10px 0px rgba(255, 0, 0, 1), 
