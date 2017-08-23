@@ -44,7 +44,7 @@ html, body {
 }
 
 #mainBeer img{
-    height:
+    height:;
 }
 
 #mainBeer div{
@@ -55,6 +55,13 @@ html, body {
     border: 1px solid black;
     padding: 5px;
 }
+
+#mainBeer>h2{
+    width: 100%;
+    text-align: center;
+    padding-top: 4em;
+}
+
 
 #button{
     font-family: 'Baloo Bhaijaan', cursive;
@@ -129,4 +136,8 @@ nav ul {
 nav img {
     width: 100%;
     height: auto;
+}
+
+.hidden {
+    display: none;
 }
