@@ -9,13 +9,36 @@ html, body {
     width: auto;
     height: 100%;
     background: #82D5F0;
-    border: 12px double black;
+    border: 10px double black;
+}
+
+h1{
+    text-align: center;
+    font-family: 'BellBottom';
+    color: white;
+    text-shadow: -10px 10px 0px rgba(255, 0, 0, 1), 
+                 -20px 20px 0px rgba(255, 89, 0, .75),
+                 -30px 30px 0px rgba(255, 145, 0, .25),
+                 -40px 40px 0px rgba(255, 210, 0, .5);
+    font-size: 70pt;
+    margin: 1px;
+}
+
+h2{
+    text-align: center;
+    margin: 0;
 }
 
 h3{
     font-family: 'Sigmar One', cursive;
     text-align: center;
+    margin: 50px;
 }
+
+ul{
+    list-style-type: none;
+}
+
 #pref{
     background-color: white;
     background: -webkit-linear-gradient(left, rgba(255, 0, 0, .5), rgba(250, 211, 15, .5));
@@ -25,14 +48,12 @@ h3{
     border: 2px solid black;
     width: 90%;
     margin: auto;
-
 }
 
 #pref p{
     width: 14%;
 }
 
-/* Hey Morgan! just added this for the preferences display. I shouldn't mess with anything, but feel free to delete it if it does */
 .preference {
     text-align: right;
     font-family: 'Sigmar One', cursive;
@@ -58,9 +79,6 @@ h3{
     height:;
 } */
 
-ul{
-    list-style-type: none;
-}
 #mainBeer div{
     width: 30%;
     height: 85%;
@@ -92,10 +110,6 @@ ul{
     align-content: space-around;
 }
 
-h2{
-    text-align: center;
-    margin: 0;
-}
 
 #bottomBeer{
     width: 80%;
@@ -110,6 +124,7 @@ h2{
     background-image: url('../assets/wood.jpg');
     font-size: 20pt;
     font-family: 'Cabin Sketch', cursive;
+    text-align: center;
 
 }
 
@@ -122,16 +137,6 @@ h3{
     text-align: center;
 }
 
-h1{
-    text-align: center;
-    font-family: 'BellBottom';
-    color: white;
-    text-shadow: -10px 10px 0px rgba(255, 0, 0, 1), 
-                 -20px 20px 0px rgba(255, 89, 0, .75),
-                 -30px 30px 0px rgba(255, 145, 0, .25),
-                 -40px 40px 0px rgba(255, 210, 0, .5);
-    font-size: 70pt;
-}
 
 .alt-beer {
     display: initial;
