@@ -6,18 +6,19 @@ var user = {
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
+        name: '',
         color: ['minC', 'maxC'],
         abv: ['minA', 'maxA'],
         bitterness: ['minB', 'maxB']
     },
 
+    allNames: [],
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
     elForm: document.getElementById('getPreferences'),
 
     prefHandler: function(e, elForm) {
-        this.getPreviousPreferences();
         user.currentPreferences.color[0] = elForm.minC.value;
         user.currentPreferences.color[1] = elForm.maxC.value;
         user.currentPreferences.abv[0] = elForm.minA.value;
@@ -28,6 +29,16 @@ var user = {
         this.preferencesToLS();
         window.location = '../output/output.html';
     },
+
+    getPreviousNames: function() {
+        if(localStorage.getItem('name')) {
+            alert('check')
+            this.allNames = localStorage.getItem('name');
+            this.name = this.allNames.slice(-1)[0];
+            this.currentPreferences.name = this.name;
+        }
+    },
+
     getPreviousPreferences: function() {
         if(localStorage.getItem('preferences')) {
             this.previousPreferences = ( JSON.parse(localStorage.getItem('preferences')));
@@ -238,6 +249,13 @@ var database = {
 
     }
 }
+
+
+function onRunInput() {
+        this.getPreviousPreferences();
+        this.getPreviousNames();
+    }
+
 
 // function test() { // tests all current defined methods for database object
 //     user.name = 'Ned Stark',
