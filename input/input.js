@@ -78,15 +78,15 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     // }
 
     //         name              color  abv  bitt  ID
-    new Beer('Lite American Lager', '1', '2', '1', '01');
-    new Beer('American Lager', ' 1', '3', '1', '02');
-    new Beer('Cream Ale', '1', '3', '1', '03');
-    new Beer('American Wheat Beer', '2', '3', '2', '04');
-    new Beer('International Pale Lager', '1', '3', '2', '05');
-    new Beer('International Amber Lager', '3', '3', '1', '06');
-    new Beer('International Dark Lager', '4', '1', '3', '07');
-    new Beer('Czech Pale Lager', '2', '2', '2', '08');
-    new Beer('Czech Premium Pale Lager', '2', '2', '3', '09');
+    new Beer('Lite American Lager', '1', '2', '1', '1');
+    new Beer('American Lager', ' 1', '3', '1', '2');
+    new Beer('Cream Ale', '1', '3', '1', '3');
+    new Beer('American Wheat Beer', '2', '3', '2', '4');
+    new Beer('International Pale Lager', '1', '3', '2', '5');
+    new Beer('International Amber Lager', '3', '3', '1', '6');
+    new Beer('International Dark Lager', '4', '1', '3', '7');
+    new Beer('Czech Pale Lager', '2', '2', '2', '8');
+    new Beer('Czech Premium Pale Lager', '2', '2', '3', '9');
     new Beer('Czech Amber Lager', '3', '3', '2', '10');
     new Beer('Czech Dark Lager', '5', '3', '2', '11');
     new Beer('Munich Helles', '1', '3', '2', '12');
