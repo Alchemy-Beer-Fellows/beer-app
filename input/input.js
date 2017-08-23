@@ -32,8 +32,7 @@ var user = {
 
     getPreviousNames: function() {
         if(localStorage.getItem('name')) {
-            alert('check')
-            this.allNames = localStorage.getItem('name');
+            this.allNames = JSON.parse(localStorage.getItem('name'));
             this.name = this.allNames.slice(-1)[0];
             this.currentPreferences.name = this.name;
         }
@@ -250,11 +249,23 @@ var database = {
     }
 }
 
+function greetUser() {
+    var elGreeting = document.getElementById('greeting');
+    elGreeting.innerText = 'Hi ' + user.name + '......................';
+}
 
 function onRunInput() {
-        this.getPreviousPreferences();
-        this.getPreviousNames();
+    user.getPreviousPreferences();
+    user.getPreviousNames();
+    if(user.name) {
+        greetUser();
     }
+    else {
+        user.name = 'Guest'
+    }
+}
+
+onRunInput();
 
 
 // function test() { // tests all current defined methods for database object
