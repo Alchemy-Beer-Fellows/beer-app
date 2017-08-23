@@ -304,10 +304,10 @@ var database = {
             event.preventDefault();
         }
 
-        if(this.goodAll > 0) {
+        if(this.goodAll.length > 0) {
             var threeBeers = this.getChoices();
             for (var i = 1; i <= 3; i ++){
-                this.fillInChoice(i, threeBeers[i -1]);
+                this.fillInChoice(i, threeBeers[i - 1]);
             }
         }
         else {
