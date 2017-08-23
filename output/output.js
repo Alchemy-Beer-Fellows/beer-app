@@ -65,6 +65,7 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     // }
 
     //                      name              color  abv  bitt  ID
+    new Beer('Belgian Dark Strong Ale', '4', '5', '2', '0');
     new Beer('Lite American Lager', '1', '2', '1', '1');
     new Beer('American Lager', ' 1', '3', '1', '2');
     new Beer('Cream Ale', '1', '3', '1', '3');
@@ -146,7 +147,6 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Belgian Single', '1', '3', '2', '79');
     new Beer('Belgian Dubbel', '1', '4', '2', '80');
     new Beer('Belgian Tripel', '2', '5', '2', '81');
-    new Beer('Belgian Dark Strong Ale', '4', '5', '2', '82');
 }
 
 
@@ -261,14 +261,12 @@ var database = {
 
     getChoices: function (){
         var threeBeers = [];
-        console.log('length: ' + this.goodAll.length);
         for (var i = 0; i < 3; i ++){
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
             threeBeers[i] = beers[randomIndex];
             console.log('randomIndex: ' + randomIndex)
         }
-        console.log(threeBeers);
         return threeBeers;
     },
 
@@ -288,11 +286,7 @@ function onRun() {
     user.getCurrentPreference();
     user.showPreferences();
     compileBeers();
-    console.log(beers);
     database.compilePreferredBeers();
-    console.log(database.abv_bitterness);
-    console.log(database.color_abv);
-    console.log(database.color_bitterness);
     database.displayChoices();
     var moreBeer = document.getElementById('button');
     moreBeer.addEventListener('click', database.displayChoices.bind(database));
