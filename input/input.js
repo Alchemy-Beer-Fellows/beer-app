@@ -67,7 +67,7 @@ var user = {
         var str = JSON.stringify(this.previousPreferences);
         localStorage.setItem('preferences', str);
     }
-}
+};
 user.elForm.addEventListener('submit', function(e) {
     e.preventDefault();
     user.prefHandler(e, this);

@@ -46,16 +46,13 @@ var user = {
 
     preferenceRange: function(property) {
         var innerText = this.currentPreferences[property][0] + ' - ' + this.currentPreferences[property][1];
-        console.log('innerText: ' + innerText);
-        var validRange = this.currentPreferences[property][0] < this.currentPreferences[property][1];;
-        console.log('validRange: ' + validRange);
+        var validRange = this.currentPreferences[property][0] <= this.currentPreferences[property][1];;
         if(!validRange) {
             innerText = innerText + ' (invalid range)';
         }
         return innerText;
     },
     showPreferences: function() {
-        alert('in showPreferences');
         var elColor = document.getElementById('color');
         elColor.innerText = this.preferenceRange('color');
         var elAbv = document.getElementById('abv');
@@ -294,7 +291,6 @@ var database = {
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
             threeBeers[i] = beers[randomIndex];
-            console.log('randomIndex: ' + randomIndex)
         }
         return threeBeers;
     },
@@ -320,8 +316,55 @@ var database = {
             var elButton = document.getElementById('button');
             elButton.setAttribute('class', 'hidden');
         }
+    },
+
+    twoPropExcludeAll: function(twoProp) {
+        var twoPropExclusive = [];
+        for(var i = 0; i < twoProp.length; i++) {
+            if(!this.goodAll.includes(twoProp[i])) {
+                twoPropExclusive.push(twoProp[i]);
+            }
+        }
+        return twoPropExclusive;
+    },
+
+    renderAlternative: function(id, properties) {
+        var elDiv = document.getElementById(id);
+        var twoPropExclusive = this.twoPropExcludeAll(database[properties]);
+        for(var i = 0; i < twoPropExclusive.length; i++) {
+            var elBeer = document.createElement('div');
+                elBeer.setAttribute('class', 'alt-beer');
+                var index = parseInt(twoPropExclusive[i])
+
+                var elH5 = document.createElement('h5');
+                elH5.innerText = beers[index].style;
+                elBeer.appendChild(elH5);
+
+                var elPopUp = document.createElement('div');
+                elPopUp.setAttribute('class', 'hidden');
+                    var elColor = document.createElement('p');
+                    elColor.innerText = 'Color: ' + beers[index].color;
+                    elPopUp.appendChild(elColor);
+
+                    var elAbv = document.createElement('p');
+                    elAbv.innerText = 'ABV: ' + beers[index].abv;
+                    elPopUp.appendChild(elAbv);
+
+                    var elBitter = document.createElement('p');
+                    elBitter.innerText = 'Bitterness: ' + beers[index].bitterness;
+                    elPopUp.appendChild(elBitter);
+                elBeer.appendChild(elPopUp);
+            elDiv.appendChild(elBeer);
+
+        }
+    },
+
+    displayAlternatives: function() {
+        this.renderAlternative('AB', 'color_abv');
+        this.renderAlternative('BC', 'color_bitterness');
+        this.renderAlternative('AC', 'abv_bitterness');
     }
-}
+};
 
 
 function onRunOutput() {
@@ -331,6 +374,7 @@ function onRunOutput() {
     compileBeers();
     database.compilePreferredBeers();
     database.displayChoices();
+    database.displayAlternatives();
     var moreBeer = document.getElementById('button');
     moreBeer.addEventListener('click', database.displayChoices.bind(database));
 
