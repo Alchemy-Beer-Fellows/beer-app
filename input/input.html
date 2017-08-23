@@ -2,10 +2,10 @@
 
 <html>
     <head>
-        <title>Preferences</title>
+        <title>Pick Your Poison</title>
         <link href='input.css' type='text/css' rel='stylesheet'/>
         <link href='/multirange/multirange.css' type='text/css' />
-         <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -14,20 +14,7 @@
         <div id='main'>
 
         </div>
-        <nav>
-            <h5>DEV</h5>
-            <ul>
-                <li>
-                    <a href='../index.html'><img src='../assets/home.svg'/></a>
-                </li>
-                <li>
-                    <a href='./input.html'><img src='../assets/input.svg'/></a>
-                </li>
-                <li>
-                    <a href='../output/output.html'><img src='../assets/output.svg'/></a>
-                </li>
-            </ul>
-        </nav>
+
         <form id="getPreferences">
             <fieldset id="colorMin">
                 <legend>Minimum Color</legend>
@@ -77,24 +64,12 @@
                 <input id="maxB4" type="radio" name="maxB" value=4><label>4</label>
                 <input id="maxB5" type="radio" name="maxB" value=5><label>5</label>
             </fieldset> 
-            <div class="switch"> 
-                <!-- test for buttons -->
-                <input name="switch" id="one" type="radio" checked/>
-                <label for="one" class="switch__label">One</label>
-                 
-                <input name="switch" id="two" type="radio" />
-                <label for="two" class="switch__label">Two</label>
-                 
-                <input name="switch" id="three" type="radio" />
-                <label for="three" class="switch__label" >Three</label>
-                 
-                <div class="switch__indicator" /></div>
-              </div>
+            <br>
             <input type="submit" value="Save">
         </form>
             
         
         <script src="input.js" type="text/javascript"></script>
-        <script src="multirange/multirange.js" type="text/javascript">
+        <script src="multirange/multirange.js" type="text/javascript"></script>
     </body>
 </html>

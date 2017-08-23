@@ -259,7 +259,7 @@ var database = {
 
 function greetUser() {
     var elGreeting = document.getElementById('greeting');
-    elGreeting.innerText = 'Hi ' + user.name + '......................';
+    elGreeting.innerText = 'Hi ' + user.name + '!  ' + '  Pick your preferences';
 }
 
 function onRunInput() {
