@@ -8,7 +8,7 @@ html, body {
 }
 
 h1{
-  font-family: 'Shrikhand', cursive;
+  font-family: 'Sigmar One', cursive;
   font-size: 40pt;
   text-align: center;
 }
@@ -67,25 +67,31 @@ opacity: 0.8;
 #colorMin{
     display: inline-block;
     margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
 
 }
 #colorMax{
     display: inline-block;
     margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
 }
 #abvMin{
     display: inline-block;
     margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
 }
 #abvMax{
     display: inline-block;
     margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
 }
 #bitterMin{
     display: inline-block;
     margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
 }
 #bitterMax{
     display: inline-block;
     margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
 }

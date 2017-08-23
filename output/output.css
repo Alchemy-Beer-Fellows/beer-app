@@ -5,10 +5,11 @@
 
 html, body {
     margin: 0;
-    padding: 0;
+    padding: 45px;
     width: auto;
     height: 100%;
     background: #82D5F0;
+    border: 12px double black;
 }
 
 #pref{
@@ -29,7 +30,11 @@ html, body {
 /* Hey Morgan! just added this for the preferences display. I shouldn't mess with anything, but feel free to delete it if it does */
 .preference {
     text-align: right;
+    font-family: 'Sigmar One', cursive;
+    font-size: 15pt;
 }
+
+
 .range {
     text-align: left;
 }
@@ -54,6 +59,7 @@ html, body {
     margin: 1em 0;
     border: 1px solid black;
     padding: 5px;
+    background-image: url('./assest/wood.jpg');
 }
 
 #mainBeer>h2{
@@ -88,6 +94,8 @@ h2{
     justify-content: space-between;
     align-content: center;
     margin: 10em auto;
+    border: 12px double black;
+    padding: 45px;
 }
 
 #bottomBeer div{
