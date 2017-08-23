@@ -25,6 +25,7 @@ var user = {
         user.currentPreferences.bitterness[1] = elForm.maxB.value;
         this.mergePreferences();
         this.preferencesToLS();
+
         if (elForm.minC.value > elForm.maxC.value) {
             alert('Invalid range: min must be less than max.');
             return false;
@@ -66,6 +67,7 @@ var user = {
         localStorage.setItem('preferences', str);
     }
 };
+
 user.elForm.addEventListener('submit', function(e) {
     e.preventDefault();
     user.prefHandler(e, this);
@@ -253,7 +255,7 @@ var database = {
 
 function greetUser() {
     var elGreeting = document.getElementById('greeting');
-    elGreeting.innerText = 'Hi ' + user.name + '!  ' + '  Pick your preferences';
+    elGreeting.innerText = 'Hi ' + user.name + '......................';
 }
 
 function onRunInput() {
@@ -263,6 +265,33 @@ function onRunInput() {
         greetUser();
     } else {
         user.name = 'Guest';
+    }
+    if (user.previousPreferences) {
+        for (var i = 0; i <= user.previousPreferences.length - 1; i++) {
+            if (user.previousPreferences[i].name === user.name) {
+                var returnPreferences = user.previousPreferences[i];
+                var minColorValue = returnPreferences.color[0];
+                var maxColorValue = returnPreferences.color[1];
+                var minAbvValue = returnPreferences.abv[0];
+                var maxAbvValue = returnPreferences.abv[1];
+                var minBitternessValue = returnPreferences.bitterness[0];
+                var maxBitternessValue = returnPreferences.bitterness[1];
+                var minColorEle = document.querySelector("#colorMin input[value='" + minColorValue + "']");
+                var maxColorEle = document.querySelector("#colorMax input[value='" + maxColorValue + "']");
+                var minAbvEle = document.querySelector("#abvMin input[value='" + minAbvValue + "']");
+                var maxAbvEle = document.querySelector("#abvMax input[value='" + maxAbvValue + "']");
+                var minBitternessEle = document.querySelector("#bitterMin input[value='" + minBitternessValue + "']");
+                var maxBitternessEle = document.querySelector("#bitterMax input[value='" + maxBitternessValue + "']");
+                minColorEle.setAttribute('checked', 'checked');
+                maxColorEle.setAttribute('checked', 'checked');
+                minAbvEle.setAttribute('checked', 'checked');
+                maxAbvEle.setAttribute('checked', 'checked');
+                minBitternessEle.setAttribute('checked', 'checked');
+                maxBitternessEle.setAttribute('checked', 'checked');
+                break;
+            }
+
+        }
     }
 }
 
