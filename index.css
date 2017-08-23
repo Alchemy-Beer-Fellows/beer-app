@@ -85,7 +85,13 @@ nav img {
    margin: 0 auto;
    text-align: center;
    padding: 5%;
+   font-size: 15pt;
 }
+
+/* #getName{
+   font-size: 30pt;
+   padding: 3%;
+} */
 
 #right{
     float: right;
@@ -93,4 +99,13 @@ nav img {
 
 #right1{
     float: right;
+}
+#sign-in-button{
+    width: 150px;
+    height: 30px;
+    font-size: 15pt;
+}
+
+#nameInput{
+    font-size: 20px;
 }
