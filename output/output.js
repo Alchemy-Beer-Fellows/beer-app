@@ -25,6 +25,16 @@ var user = {
         this.getPreviousPreferences();
         this.currentPreferences= this.previousPreferences.slice(-1)[0];
     },
+
+    showPreferences: function() {
+        var elColor = document.getElementById('color');
+        elColor.innerText = this.currentPreferences.color[0] + ' - ' + this.currentPreferences.color[1];
+        var elAbv = document.getElementById('abv');
+        elAbv.innerText = this.currentPreferences.abv[0] + ' - ' + this.currentPreferences.abv[1];
+        var elBitter = document.getElementById('bitter');
+        elBitter.innerText = this.currentPreferences.bitterness[0] + ' - ' + this.currentPreferences.bitterness[1];
+
+    }
 }
 // user.submit.addEventListener('click', prefHandler, true);
 
@@ -276,6 +286,7 @@ var database = {
 
 function onRun() {
     user.getCurrentPreference();
+    user.showPreferences();
     compileBeers();
     console.log(beers);
     database.compilePreferredBeers();
