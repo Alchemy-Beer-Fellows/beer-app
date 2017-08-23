@@ -3,11 +3,13 @@ var user = {
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
-        color: ['min', 'max'],
-        abv: [],
-        bitterness: []
+        name: '',
+        color: ['minC', 'maxC'],
+        abv: ['minA', 'maxA'],
+        bitterness: ['minB', 'maxB']
     },
 
+    allNames: [],
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
@@ -17,8 +19,24 @@ var user = {
     //     user.currentPreferences
     //     preferencesToLS('beer', this.currentPreferences);
     // },
+
+    getPreviousNames: function() {
+        if(localStorage.getItem('name')) {
+            this.allNames = JSON.parse(localStorage.getItem('name'));
+            this.name = this.allNames.slice(-1)[0];
+            this.currentPreferences.name = this.name;
+        }
+    },
+
     getPreviousPreferences: function() {
-        this.previousPreferences= JSON.parse(localStorage.getItem('preferences'));
+        if(localStorage.getItem('preferences')) {
+            this.previousPreferences = ( JSON.parse(localStorage.getItem('preferences')));
+            return JSON.parse(localStorage.getItem('preferences'));
+        } else {
+            this.previousPreferences = [];
+            return [];
+        }
+        
     },
 
     getCurrentPreference: function() {
@@ -282,7 +300,8 @@ var database = {
 }
 
 
-function onRun() {
+function onRunOutput() {
+    user.getPreviousNames();
     user.getCurrentPreference();
     user.showPreferences();
     compileBeers();
@@ -293,7 +312,7 @@ function onRun() {
 
 }
 
-onRun();
+onRunOutput();
 
 
 // function test() { // tests all current defined methods for database object
