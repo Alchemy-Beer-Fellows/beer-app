@@ -26,11 +26,14 @@ var user = {
         user.currentPreferences.bitterness[1] = elForm.maxB.value;
         this.mergePreferences();
         this.preferencesToLS();
+        window.location = '../output/output.html';
     },
     getPreviousPreferences: function() {
-        if(localStorage.getItem.preferences) {
+        if(localStorage.getItem('preferences')) {
+            this.previousPreferences = ( JSON.parse(localStorage.getItem('preferences')));
             return JSON.parse(localStorage.getItem('preferences'));
         } else {
+            this.previousPreferences = [];
             return [];
         }
         
@@ -40,7 +43,7 @@ var user = {
         this.previousPreferences.push(this.currentPreferences);
     },
     preferencesToLS: function() {
-        var str = JSON.stringify(this.currentPreferences);
+        var str = JSON.stringify(this.previousPreferences);
         localStorage.setItem('preferences', str);
     }
 }
@@ -236,16 +239,11 @@ var database = {
     }
 }
 
-function test() { // tests all current defined methods for database object
-    user.name = 'Ned Stark',
-        user.currentPreferences.abv = [2, 3];
-<<<<<<< HEAD
-    user.currentPreferences.bitterness = [3, 5];
-    user.currentPreferences.color = [3, 5];
-=======
-    user.currentPreferences.bitterness = [1, 3];
-    user.currentPreferences.color = [4, 5];
->>>>>>> origin
+// function test() { // tests all current defined methods for database object
+//     user.name = 'Ned Stark',
+//     user.currentPreferences.abv = [2, 3];
+//     user.currentPreferences.bitterness = [1, 3];
+//     user.currentPreferences.color = [4, 5];
 
 
 //     compileBeers();
