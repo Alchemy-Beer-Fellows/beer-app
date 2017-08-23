@@ -110,32 +110,19 @@ h1{
     font-size: 70pt;
 }
 
-nav {
-    max-height: 150px;
-    max-width: 38px;
-    position: fixed;
-    top: 200px;
-    right: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-content: center;
-}
-
-h5 {
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-nav img {
+.alt-beer {
+    display: initial;
     width: 100%;
-    height: auto;
+    text-align: center;
+}
+
+.alt-beer:hover div {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    top: -12px;
+    right: -146px;
+    display: initial;
 }
 
 .hidden {
