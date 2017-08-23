@@ -3,11 +3,13 @@ var user = {
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
-        color: ['min', 'max'],
-        abv: [],
-        bitterness: []
+        name: '',
+        color: ['minC', 'maxC'],
+        abv: ['minA', 'maxA'],
+        bitterness: ['minB', 'maxB']
     },
 
+    allNames: [],
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
@@ -17,8 +19,24 @@ var user = {
     //     user.currentPreferences
     //     preferencesToLS('beer', this.currentPreferences);
     // },
+
+    getPreviousNames: function() {
+        if(localStorage.getItem('name')) {
+            this.allNames = JSON.parse(localStorage.getItem('name'));
+            this.name = this.allNames.slice(-1)[0];
+            this.currentPreferences.name = this.name;
+        }
+    },
+
     getPreviousPreferences: function() {
-        this.previousPreferences= JSON.parse(localStorage.getItem('preferences'));
+        if(localStorage.getItem('preferences')) {
+            this.previousPreferences = ( JSON.parse(localStorage.getItem('preferences')));
+            return JSON.parse(localStorage.getItem('preferences'));
+        } else {
+            this.previousPreferences = [];
+            return [];
+        }
+        
     },
 
     getCurrentPreference: function() {
@@ -26,13 +44,24 @@ var user = {
         this.currentPreferences= this.previousPreferences.slice(-1)[0];
     },
 
+    preferenceRange: function(property) {
+        var innerText = this.currentPreferences[property][0] + ' - ' + this.currentPreferences[property][1];
+        console.log('innerText: ' + innerText);
+        var validRange = this.currentPreferences[property][0] < this.currentPreferences[property][1];;
+        console.log('validRange: ' + validRange);
+        if(!validRange) {
+            innerText = innerText + ' (invalid range)';
+        }
+        return innerText;
+    },
     showPreferences: function() {
+        alert('in showPreferences');
         var elColor = document.getElementById('color');
-        elColor.innerText = this.currentPreferences.color[0] + ' - ' + this.currentPreferences.color[1];
+        elColor.innerText = this.preferenceRange('color');
         var elAbv = document.getElementById('abv');
-        elAbv.innerText = this.currentPreferences.abv[0] + ' - ' + this.currentPreferences.abv[1];
+        elAbv.innerText = this.preferenceRange('abv');
         var elBitter = document.getElementById('bitter');
-        elBitter.innerText = this.currentPreferences.bitterness[0] + ' - ' + this.currentPreferences.bitterness[1];
+        elBitter.innerText = this.preferenceRange('bitterness');
 
     }
 }
@@ -274,15 +303,29 @@ var database = {
         if(event){
             event.preventDefault();
         }
-        var threeBeers = this.getChoices();
-        for (var i = 1; i <= 3; i ++){
-            this.fillInChoice(i, threeBeers[i -1]);
+
+        if(this.goodAll > 0) {
+            var threeBeers = this.getChoices();
+            for (var i = 1; i <= 3; i ++){
+                this.fillInChoice(i, threeBeers[i -1]);
+            }
+        }
+        else {
+            var elMainBeer = document.getElementById('mainBeer');
+            elMainBeer.innerHTML = '';
+            var elH2 = document.createElement('h2');
+            elH2.innerText = 'You\'re too picky!';
+            elMainBeer.appendChild(elH2);
+
+            var elButton = document.getElementById('button');
+            elButton.setAttribute('class', 'hidden');
         }
     }
 }
 
 
-function onRun() {
+function onRunOutput() {
+    user.getPreviousNames();
     user.getCurrentPreference();
     user.showPreferences();
     compileBeers();
@@ -293,7 +336,7 @@ function onRun() {
 
 }
 
-onRun();
+onRunOutput();
 
 
 // function test() { // tests all current defined methods for database object
