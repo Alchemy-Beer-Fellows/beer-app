@@ -1,21 +1,21 @@
 var user = {
-    
-
-
     name: '',
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
+
         name: '',
         color: ['minC', 'maxC'],
         abv: ['minA', 'maxA'],
         bitterness: ['minB', 'maxB']
+
     },
 
     allNames: [],
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
+
     elForm: document.getElementById('getPreferences'),
 
     prefHandler: function(e, elForm) {
@@ -47,6 +47,7 @@ var user = {
             return [];
         }
         
+
     },
 
     mergePreferences: function() {
@@ -57,10 +58,7 @@ var user = {
         localStorage.setItem('preferences', str);
     }
 }
-user.elForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    user.prefHandler(e, this);
-    } , true);
+// user.submit.addEventListener('click', prefHandler, true);
 
 var beers = []; // array for beer objects
 function Beer(style, color, abv, bitter, idNum) { // beer object constructor
@@ -86,6 +84,7 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     // for(var i = 0; i < styles.length; i++) { // repeat for all styles
     //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
     // }
+
 
     //         name              color  abv  bitt  ID
     new Beer('Lite American Lager', '1', '2', '1', '1');
@@ -249,6 +248,7 @@ var database = {
     }
 }
 
+
 function greetUser() {
     var elGreeting = document.getElementById('greeting');
     elGreeting.innerText = 'Hi ' + user.name + '......................';
@@ -275,16 +275,17 @@ onRunInput();
 //     user.currentPreferences.color = [4, 5];
 
 
-//     compileBeers();
 
-//     console.log(database.beers);
-//     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-//     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-//     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
+    compileBeers();
+
+    console.log(database.beers);
+    console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
+    console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
+    console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
 
 
-//     console.log('color + abv + bitterness: ' + database.findBeersWithAll());
+    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
 
-// }
+}
 
-// test();
+test();
