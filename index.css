@@ -3,14 +3,21 @@
     src: url('./assets/BellBottom.ttf');
 }
 
-html, body {
-    border: 12px double black;
+  html, body{ 
+    border: 10px double black;
     margin: 0;
     padding: 45px;
     width: auto;
     height: 100%;
-    background-color: #82D5F0; /*temp value*/
+    background-color: #82D5F0; 
 }
+
+body{
+    background-image: url('./assets/beerglass.PNG');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 
 h1{ 
     text-align: center;
@@ -20,9 +27,10 @@ h1{
                  -20px 20px 0px rgba(255, 89, 0, .75),
                  -30px 30px 0px rgba(255, 145, 0, .25),
                  -40px 40px 0px rgba(255, 210, 0, .5);
-    font-size: 100pt;
+    font-size: 105pt;
     transform: rotate(360deg);
     transition: transform 1s ease-in-out;
+    margin: 20px;
 }
 
 h1:hover {
@@ -32,19 +40,24 @@ h1:hover {
 h3{
     text-align: center;
     font-family: 'Sigmar One', cursive;
-    font-size: 30pt;
+    font-size: 25pt;
+    margin: 75px;
 }
 
 h4{
     text-align: center;
     font-family: 'Sigmar One', cursive;
     font-size: 15pt;
+    /* margin: 195px; */
 }
 
+img{
+    margin: 1px;
+}
  #freeTrial{
     display: inline-block;
     border: 2px solid black;
-    margin: auto;
+    /* margin: 15px; */
     background-color:#C4C4C4;
     padding: 3px;
     text-decoration: none;
@@ -85,7 +98,13 @@ nav img {
    margin: 0 auto;
    text-align: center;
    padding: 5%;
+   font-size: 15pt;
 }
+
+/* #getName{
+   font-size: 30pt;
+   padding: 3%;
+} */
 
 #right{
     float: right;
@@ -93,4 +112,13 @@ nav img {
 
 #right1{
     float: right;
+}
+#sign-in-button{
+    width: 150px;
+    height: 30px;
+    font-size: 15pt;
+}
+
+#nameInput{
+    font-size: 20px;
 }
