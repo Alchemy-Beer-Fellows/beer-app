@@ -18,13 +18,23 @@ var user = {
     //     preferencesToLS('beer', this.currentPreferences);
     // },
     getPreviousPreferences: function() {
-        previousPreferences= JSON.parse(localStorage.getItem('preferences'));
+        this.previousPreferences= JSON.parse(localStorage.getItem('preferences'));
     },
 
     getCurrentPreference: function() {
-        getPreviousPreferences();
-        this.currentPreferences= this.previousPreferences.slice(-1);
+        this.getPreviousPreferences();
+        this.currentPreferences= this.previousPreferences.slice(-1)[0];
     },
+
+    showPreferences: function() {
+        var elColor = document.getElementById('color');
+        elColor.innerText = this.currentPreferences.color[0] + ' - ' + this.currentPreferences.color[1];
+        var elAbv = document.getElementById('abv');
+        elAbv.innerText = this.currentPreferences.abv[0] + ' - ' + this.currentPreferences.abv[1];
+        var elBitter = document.getElementById('bitter');
+        elBitter.innerText = this.currentPreferences.bitterness[0] + ' - ' + this.currentPreferences.bitterness[1];
+
+    }
 }
 // user.submit.addEventListener('click', prefHandler, true);
 
@@ -55,15 +65,16 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     // }
 
     //                      name              color  abv  bitt  ID
-    new Beer('Lite American Lager', '1', '2', '1', '01');
-    new Beer('American Lager', ' 1', '3', '1', '02');
-    new Beer('Cream Ale', '1', '3', '1', '03');
-    new Beer('American Wheat Beer', '2', '3', '2', '04');
-    new Beer('International Pale Lager', '1', '3', '2', '05');
-    new Beer('International Amber Lager', '3', '3', '1', '06');
-    new Beer('International Dark Lager', '4', '1', '3', '07');
-    new Beer('Czech Pale Lager', '2', '2', '2', '08');
-    new Beer('Czech Premium Pale Lager', '2', '2', '3', '09');
+    new Beer('Belgian Dark Strong Ale', '4', '5', '2', '0');
+    new Beer('Lite American Lager', '1', '2', '1', '1');
+    new Beer('American Lager', ' 1', '3', '1', '2');
+    new Beer('Cream Ale', '1', '3', '1', '3');
+    new Beer('American Wheat Beer', '2', '3', '2', '4');
+    new Beer('International Pale Lager', '1', '3', '2', '5');
+    new Beer('International Amber Lager', '3', '3', '1', '6');
+    new Beer('International Dark Lager', '4', '1', '3', '7');
+    new Beer('Czech Pale Lager', '2', '2', '2', '8');
+    new Beer('Czech Premium Pale Lager', '2', '2', '3', '9');
     new Beer('Czech Amber Lager', '3', '3', '2', '10');
     new Beer('Czech Dark Lager', '5', '3', '2', '11');
     new Beer('Munich Helles', '1', '3', '2', '12');
@@ -136,7 +147,6 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Belgian Single', '1', '3', '2', '79');
     new Beer('Belgian Dubbel', '1', '4', '2', '80');
     new Beer('Belgian Tripel', '2', '5', '2', '81');
-    new Beer('Belgian Dark Strong Ale', '4', '5', '2', '82');
 }
 
 
@@ -166,7 +176,7 @@ var database = {
             goodBeersB,
             goodBeersAB = [],
 
-            goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
+        goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
         goodBeersB = this.findBeersWithin(parameterB, user.currentPreferences[parameterB][0], user.currentPreferences[parameterB][1]);
 
         for (var i = 0; i < goodBeersA.length; i++) {
@@ -211,13 +221,19 @@ var database = {
         }
         this.goodAll = bestBeers;
         return this.goodAll;
+    },
 
+    compilePreferredBeers: function() {
+        this.findBeersWithinBoth('color', 'abv');
+        this.findBeersWithinBoth('color', 'bitterness');
+        this.findBeersWithinBoth('abv', 'bitterness');
+        this.findBeersWithAll();
     },
 
     fillInChoice: function (i, beer){
         var elChoice = document.getElementById('choice' + i);
         elChoice.innerHTML = '';
-    elChoice.setAttribute( 'id', 'choice' + i )
+        elChoice.setAttribute( 'id', 'choice' + i )
         var elH5 = document.createElement('h5');
         elH5.innerText = beer.style;
         elChoice.appendChild(elH5);
@@ -235,6 +251,7 @@ var database = {
         var elLi = document.createElement('li');
         elLi.innerText = 'Bitterness: ' + beer.bitterness;
         elUl.appendChild(elLi);
+
         elChoice.appendChild(elUl);
 
         // var elImage = document.createElement('img');
@@ -247,13 +264,16 @@ var database = {
         for (var i = 0; i < 3; i ++){
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
-            threeBeers[i]  = beers[randomIndex];
+            threeBeers[i] = beers[randomIndex];
+            console.log('randomIndex: ' + randomIndex)
         }
         return threeBeers;
     },
 
-    displayChoices: function (){
+    displayChoices: function (){ 
+        if(event){
             event.preventDefault();
+        }
         var threeBeers = this.getChoices();
         for (var i = 1; i <= 3; i ++){
             this.fillInChoice(i, threeBeers[i -1]);
@@ -261,27 +281,34 @@ var database = {
     }
 }
 
-var moreBeer = document.getElementById('button');
 
-moreBeer.addEventListener('click', database.displayChoices.bind(database));
-
-function test() { // tests all current defined methods for database object
-    user.name = 'Ned Stark',
-        user.currentPreferences.abv = [2, 3];
-    user.currentPreferences.bitterness = [2, 3];
-    user.currentPreferences.color = [3, 5];
-
-
+function onRun() {
+    user.getCurrentPreference();
+    user.showPreferences();
     compileBeers();
-
-    console.log(database.beers);
-    console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-    console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-    console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
-
-
-    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
+    database.compilePreferredBeers();
+    database.displayChoices();
+    var moreBeer = document.getElementById('button');
+    moreBeer.addEventListener('click', database.displayChoices.bind(database));
 
 }
 
-test();
+onRun();
+
+
+// function test() { // tests all current defined methods for database object
+//     user.name = 'Ned Stark',
+//         user.currentPreferences.abv = [2, 3];
+//     user.currentPreferences.bitterness = [2, 3];
+//     user.currentPreferences.color = [3, 5];
+
+//     compileBeers();
+
+//     console.log(database.beers);
+//     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
+//     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
+//     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
+
+//     console.log('color + abv + bitterness: ' + database.findBeersWithAll());
+// }
+// test();

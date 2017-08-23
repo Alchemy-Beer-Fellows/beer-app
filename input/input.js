@@ -6,18 +6,19 @@ var user = {
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
+        name: '',
         color: ['minC', 'maxC'],
         abv: ['minA', 'maxA'],
         bitterness: ['minB', 'maxB']
     },
 
+    allNames: [],
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
     elForm: document.getElementById('getPreferences'),
 
     prefHandler: function(e, elForm) {
-        this.getPreviousPreferences();
         user.currentPreferences.color[0] = elForm.minC.value;
         user.currentPreferences.color[1] = elForm.maxC.value;
         user.currentPreferences.abv[0] = elForm.minA.value;
@@ -26,11 +27,24 @@ var user = {
         user.currentPreferences.bitterness[1] = elForm.maxB.value;
         this.mergePreferences();
         this.preferencesToLS();
+        window.location = '../output/output.html';
     },
+
+    getPreviousNames: function() {
+        if(localStorage.getItem('name')) {
+            alert('check')
+            this.allNames = localStorage.getItem('name');
+            this.name = this.allNames.slice(-1)[0];
+            this.currentPreferences.name = this.name;
+        }
+    },
+
     getPreviousPreferences: function() {
-        if(localStorage.getItem.preferences) {
+        if(localStorage.getItem('preferences')) {
+            this.previousPreferences = ( JSON.parse(localStorage.getItem('preferences')));
             return JSON.parse(localStorage.getItem('preferences'));
         } else {
+            this.previousPreferences = [];
             return [];
         }
         
@@ -40,7 +54,7 @@ var user = {
         this.previousPreferences.push(this.currentPreferences);
     },
     preferencesToLS: function() {
-        var str = JSON.stringify(this.currentPreferences);
+        var str = JSON.stringify(this.previousPreferences);
         localStorage.setItem('preferences', str);
     }
 }
@@ -74,16 +88,16 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
     // }
 
-    //                      name              color  abv  bitt  ID
-    new Beer('Lite American Lager', '1', '2', '1', '01');
-    new Beer('American Lager', ' 1', '3', '1', '02');
-    new Beer('Cream Ale', '1', '3', '1', '03');
-    new Beer('American Wheat Beer', '2', '3', '2', '04');
-    new Beer('International Pale Lager', '1', '3', '2', '05');
-    new Beer('International Amber Lager', '3', '3', '1', '06');
-    new Beer('International Dark Lager', '4', '1', '3', '07');
-    new Beer('Czech Pale Lager', '2', '2', '2', '08');
-    new Beer('Czech Premium Pale Lager', '2', '2', '3', '09');
+    //         name              color  abv  bitt  ID
+    new Beer('Lite American Lager', '1', '2', '1', '1');
+    new Beer('American Lager', ' 1', '3', '1', '2');
+    new Beer('Cream Ale', '1', '3', '1', '3');
+    new Beer('American Wheat Beer', '2', '3', '2', '4');
+    new Beer('International Pale Lager', '1', '3', '2', '5');
+    new Beer('International Amber Lager', '3', '3', '1', '6');
+    new Beer('International Dark Lager', '4', '1', '3', '7');
+    new Beer('Czech Pale Lager', '2', '2', '2', '8');
+    new Beer('Czech Premium Pale Lager', '2', '2', '3', '9');
     new Beer('Czech Amber Lager', '3', '3', '2', '10');
     new Beer('Czech Dark Lager', '5', '3', '2', '11');
     new Beer('Munich Helles', '1', '3', '2', '12');
@@ -187,7 +201,7 @@ var database = {
             goodBeersB,
             goodBeersAB = [],
 
-            goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
+        goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
         goodBeersB = this.findBeersWithin(parameterB, user.currentPreferences[parameterB][0], user.currentPreferences[parameterB][1]);
 
         for (var i = 0; i < goodBeersA.length; i++) {
@@ -197,10 +211,7 @@ var database = {
                 }
             }
         }
-
-        return goodBeersAB;
-
-
+    
         var firstParam,
             secondParam;
         if (parameterA === 'color' || parameterB === 'color') {
@@ -239,11 +250,18 @@ var database = {
     }
 }
 
-function test() { // tests all current defined methods for database object
-    user.name = 'Ned Stark',
-        user.currentPreferences.abv = [2, 3];
-    user.currentPreferences.bitterness = [1, 3];
-    user.currentPreferences.color = [4, 5];
+
+function onRunInput() {
+        this.getPreviousPreferences();
+        this.getPreviousNames();
+    }
+
+
+// function test() { // tests all current defined methods for database object
+//     user.name = 'Ned Stark',
+//     user.currentPreferences.abv = [2, 3];
+//     user.currentPreferences.bitterness = [1, 3];
+//     user.currentPreferences.color = [4, 5];
 
 
 //     compileBeers();

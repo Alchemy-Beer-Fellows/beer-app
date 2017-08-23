@@ -23,7 +23,15 @@ html, body {
 }
 
 #pref p{
-    width: 12%;
+    width: 14%;
+}
+
+/* Hey Morgan! just added this for the preferences display. I shouldn't mess with anything, but feel free to delete it if it does */
+.preference {
+    text-align: right;
+}
+.range {
+    text-align: left;
 }
 
 #mainBeer{
