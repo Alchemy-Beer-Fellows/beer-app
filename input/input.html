@@ -30,52 +30,65 @@
         <form id="getPreferences">
             <fieldset id="colorMin">
                 <legend>Minimum Color</legend>
-                <input  type="radio" name="minC" value=1>
-                <input  type="radio" name="minC" value=2>
-                <input  type="radio" name="minC" value=3>
-                <input  type="radio" name="minC" value=4>
-                <input  type="radio" name="minC" value=5>
+                <input  type="radio" name="minC" value=1><label>1</label>
+                <input  type="radio" name="minC" value=2><label>2</label>
+                <input  type="radio" name="minC" value=3><label>3</label>
+                <input  type="radio" name="minC" value=4><label>4</label>
+                <input  type="radio" name="minC" value=5><label>5</label>
             </fieldset>
             <fieldset id="colorMax">
                 <legend>Maximum Color</legend>
-                <input id="maxC1" type="radio" name="maxC" value=1>
-                <input id="maxC2" type="radio" name="maxC" value=2>
-                <input id="maxC3" type="radio" name="maxC" value=3>
-                <input id="maxC4" type="radio" name="maxC" value=4>
-                <input id="maxC5" type="radio" name="maxC" value=5>
-            </fieldset>
+                <input id="maxC1" type="radio" name="maxC" value=1><label>1</label>
+                <input id="maxC2" type="radio" name="maxC" value=2><label>2</label>
+                <input id="maxC3" type="radio" name="maxC" value=3><label>3</label>
+                <input id="maxC4" type="radio" name="maxC" value=4><label>4</label>
+                <input id="maxC5" type="radio" name="maxC" value=5><label>5</label>
+            </fieldset><br>
             <fieldset id="abvMin">
                 <legend>Minimum ABV</legend>
-                <input id="minA1" type="radio" name="minA" value=1>
-                <input id="minA2" type="radio" name="minA" value=2>
-                <input id="minA3" type="radio" name="minA" value=3>
-                <input id="minA4" type="radio" name="minA" value=4>
-                <input id="minA5" type="radio" name="minA" value=5>
+                <input id="minA1" type="radio" name="minA" value=1><label>1</label>
+                <input id="minA2" type="radio" name="minA" value=2><label>2</label>
+                <input id="minA3" type="radio" name="minA" value=3><label>3</label>
+                <input id="minA4" type="radio" name="minA" value=4><label>4</label>
+                <input id="minA5" type="radio" name="minA" value=5><label>5</label>
             </fieldset>
             <fieldset id="abvMax">
                 <legend>Maximum ABV</legend>
-                <input id="maxA1" type="radio" name="maxA" value=1>
-                <input id="maxA2" type="radio" name="maxA" value=2>
-                <input id="maxA3" type="radio" name="maxA" value=3>
-                <input id="maxA4" type="radio" name="maxA" value=4>
-                <input id="maxA5" type="radio" name="maxA" value=5>
-            </fieldset>
+                <input id="maxA1" type="radio" name="maxA" value=1><label>1</label>
+                <input id="maxA2" type="radio" name="maxA" value=2><label>2</label>
+                <input id="maxA3" type="radio" name="maxA" value=3><label>3</label>
+                <input id="maxA4" type="radio" name="maxA" value=4><label>4</label>
+                <input id="maxA5" type="radio" name="maxA" value=5><label>5</label>
+            </fieldset><br>
             <fieldset id="bitterMin">
                 <legend>Minimum Bitterness</legend>
-                <input id="minB1" type="radio" name="minB" value=1>
-                <input id="minB2" type="radio" name="minB" value=2>
-                <input id="minB3" type="radio" name="minB" value=3>
-                <input id="minB4" type="radio" name="minB" value=4>
-                <input id="minB5" type="radio" name="minB" value=5>
+                <input id="minB1" type="radio" name="minB" value=1><label>1</label>
+                <input id="minB2" type="radio" name="minB" value=2><label>2</label>
+                <input id="minB3" type="radio" name="minB" value=3><label>3</label>
+                <input id="minB4" type="radio" name="minB" value=4><label>4</label>
+                <input id="minB5" type="radio" name="minB" value=5><label>5</label>
             </fieldset>
             <fieldset id="bitterMax">
                 <legend>Maximum Bitterness</legend>
-                <input id="maxB1" type="radio" name="maxB" value=1>
-                <input id="maxB2" type="radio" name="maxB" value=2>
-                <input id="maxB3" type="radio" name="maxB" value=3>
-                <input id="maxB4" type="radio" name="maxB" value=4>
-                <input id="maxB5" type="radio" name="maxB" value=5>
+                <input id="maxB1" type="radio" name="maxB" value=1><label>1</label>
+                <input id="maxB2" type="radio" name="maxB" value=2><label>2</label>
+                <input id="maxB3" type="radio" name="maxB" value=3><label>3</label>
+                <input id="maxB4" type="radio" name="maxB" value=4><label>4</label>
+                <input id="maxB5" type="radio" name="maxB" value=5><label>5</label>
             </fieldset> 
+            <div class="switch"> 
+                <!-- test for buttons -->
+                <input name="switch" id="one" type="radio" checked/>
+                <label for="one" class="switch__label">One</label>
+                 
+                <input name="switch" id="two" type="radio" />
+                <label for="two" class="switch__label">Two</label>
+                 
+                <input name="switch" id="three" type="radio" />
+                <label for="three" class="switch__label" >Three</label>
+                 
+                <div class="switch__indicator" /></div>
+              </div>
             <input type="submit" value="Save">
         </form>
             
