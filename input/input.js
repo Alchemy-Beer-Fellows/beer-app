@@ -1,7 +1,5 @@
 var user = {
     name: '',
-
-
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
 
         name: '',

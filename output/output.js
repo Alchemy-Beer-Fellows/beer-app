@@ -294,7 +294,7 @@ var database = {
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
             threeBeers[i] = beers[randomIndex];
-            console.log('randomIndex: ' + randomIndex)
+            console.log('randomIndex: ' + randomIndex);
         }
         return threeBeers;
     },
