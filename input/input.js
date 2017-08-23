@@ -1,24 +1,39 @@
 var user = {
+    
+
+
     name: '',
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
-        color: ['min', 'max'],
-        abv: [],
-        bitterness: []
+        color: ['minC', 'maxC'],
+        abv: ['minA', 'maxA'],
+        bitterness: ['minB', 'maxB']
     },
 
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
-    // submit: document.getElementById(),
+    elForm: document.getElementById('getPreferences'),
 
-    // prefHandler: function() {
-    //     user.currentPreferences
-    //     preferencesToLS('beer', this.currentPreferences);
-    // },
+    prefHandler: function(e, elForm) {
+        this.getPreviousPreferences();
+        user.currentPreferences.color[0] = elForm.minC.value;
+        user.currentPreferences.color[1] = elForm.maxC.value;
+        user.currentPreferences.abv[0] = elForm.minA.value;
+        user.currentPreferences.abv[1] = elForm.maxA.value;
+        user.currentPreferences.bitterness[0] = elForm.minB.value;
+        user.currentPreferences.bitterness[1] = elForm.maxB.value;
+        this.mergePreferences();
+        this.preferencesToLS();
+    },
     getPreviousPreferences: function() {
-        return JSON.parse(localStorage.getItem('preferences'));
+        if(localStorage.getItem.preferences) {
+            return JSON.parse(localStorage.getItem('preferences'));
+        } else {
+            return [];
+        }
+        
     },
 
     mergePreferences: function() {
@@ -29,7 +44,10 @@ var user = {
         localStorage.setItem('preferences', str);
     }
 }
-// user.submit.addEventListener('click', prefHandler, true);
+user.elForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    user.prefHandler(e, this);
+    } , true);
 
 var beers = []; // array for beer objects
 function Beer(style, color, abv, bitter, idNum) { // beer object constructor
@@ -218,7 +236,6 @@ var database = {
     }
 }
 
-
 function test() { // tests all current defined methods for database object
     user.name = 'Ned Stark',
         user.currentPreferences.abv = [2, 3];
@@ -231,16 +248,16 @@ function test() { // tests all current defined methods for database object
 >>>>>>> origin
 
 
-    compileBeers();
+//     compileBeers();
 
-    console.log(database.beers);
-    console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-    console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-    console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
+//     console.log(database.beers);
+//     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
+//     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
+//     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
 
 
-    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
+//     console.log('color + abv + bitterness: ' + database.findBeersWithAll());
 
-}
+// }
 
-test();
+// test();
