@@ -1,69 +1,65 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>Preferences</title>
         <link href='./output.css' type='text/css' rel='stylesheet'/>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
+
     </head>
     <body>
         <header>
-            <h1>Beer!</h1>
+            <h1>BEER BUDDY</h1>
         </header>
-        <div id='main'>
+        <div id='pref'>
+<!--their preferences from LS-->
+
+            <p>Color:</p>
+            <p id = 'color'></p>
+            <p>ABV:</p>
+            <p id = 'abv'></p>
+            <p>Bitterness:</p>
+            <p id = 'bitter'></p>
 
         </div>
+<<<<<<< HEAD
         <!-- <script src='./output.js' type='text/javascript'></script> -->
+=======
+>>>>>>> 177d11005f95f6f56af21a86cef0b58172a99b53
+
+        <div id= 'mainBeer'>
+
+            <div id= 'choice1'></div>
+
+            <div id= 'choice2'></div>
+
+            <div id= 'choice3'></div>
+
+        </div>
 
 
+        <!-- <div id= 'button'>
+            <h2>MORE BEER!!</h2>
+        </div> -->
 
+        <form id= 'button'>
+            <button>MORE BEER!</button>
+        </form>
 
-<div id='temporary'>
-    <!-- For development purposes only. -->
-    <style>
-        nav {
-            max-height: 150px;
-            max-width: 38px;
-            position: fixed;
-            top: 200px;
-            right: 5px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-content: center;
-        }
+        <div id= 'bottomBeer'>
 
-        h5 {
-            margin: 0;
-        }
+            <div id= 'AB'> <h3>Satisfies Color & ABV</h3></div>
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
+            <div id= 'BC'> <h3>Satisfies Color & Bitterness</h3></div>
 
-        nav img {
-            width: 100%;
-            height: auto;
-        }
-    </style>
-    <nav>
-        <h5>DEV</h5>
-        <ul>
-            <li>
-                <a href='../index.html'><img src='../assets/home.svg'/></a>
-            </li>
-            <li>
-                <a href='../input/input.html'><img src='../assets/input.svg'/></a>
-            </li>
-            <li>
-                <a href='./output.html'><img src='../assets/output.svg'/></a>
-            </li>
-        </ul>
-    </nav>
-    <!-- For development purposes only. -->
-</div>
+            <div id= 'AC'> <h3>Satisfies ABV & Bitterness</h3></div>
+
+        </div>
+
+        <footer>
+        <a href = '../input/input.html' id= 'tryAgain'>TRY IT AGAIN</a>
+        </footer>
+
 
     </body>
+        <script src='./output.js' type='text/javascript'></script>
 </html>
