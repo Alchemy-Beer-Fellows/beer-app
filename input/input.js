@@ -240,23 +240,23 @@ var database = {
 }
 
 
-function test() { // tests all current defined methods for database object
-    user.name = 'Ned Stark',
-    user.currentPreferences.abv = [0, 7];
-    user.currentPreferences.bitterness = [3, 5];
-    user.currentPreferences.color = [0, 17];
+// function test() { // tests all current defined methods for database object
+//     user.name = 'Ned Stark',
+//     user.currentPreferences.abv = [0, 7];
+//     user.currentPreferences.bitterness = [3, 5];
+//     user.currentPreferences.color = [0, 17];
 
 
-    compileBeers();
+//     compileBeers();
 
-    console.log(database.beers);
-    console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-    console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-    console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
+//     console.log(database.beers);
+//     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
+//     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
+//     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
 
 
-    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
+//     console.log('color + abv + bitterness: ' + database.findBeersWithAll());
 
-}
+// }
 
-test();
+// test();
