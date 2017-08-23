@@ -27,7 +27,16 @@ var user = {
         user.currentPreferences.bitterness[1] = elForm.maxB.value;
         this.mergePreferences();
         this.preferencesToLS();
-        window.location = '../output/output.html';
+        if (elForm.minC.value > elForm.maxC.value) { 
+            alert(Invalid range: min must be less than max);
+        } else if (elForm.minA.value > elForm.maxA.value) { 
+            alert(Invalid range: min must be less than max.);
+        } else if (elForm.minB.value > elForm.maxB.value) { 
+            alert(Invalid range: min must be less than max.);
+        } else {
+            window.location = '../output/output.html';
+        }
+        
     },
 
     getPreviousNames: function() {
@@ -171,11 +180,6 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Belgian Tripel', '2', '5', '2', '81');
     new Beer('Belgian Dark Strong Ale', '4', '5', '2', '82');
 }
-
-
-
-
-
 
 
 /*main object literal, holding beer object array, methods to sort, and methods to push to local storage*/
