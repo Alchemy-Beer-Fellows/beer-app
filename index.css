@@ -9,8 +9,15 @@
     padding: 45px;
     width: auto;
     height: 100%;
-    background-color: #82D5F0; /*temp value*/
+    background-color: #82D5F0; 
 }
+
+body{
+    background-image: url('./assets/beerglass.PNG');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 
 h1{ 
     text-align: center;
