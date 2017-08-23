@@ -27,12 +27,13 @@ var user = {
         user.currentPreferences.bitterness[1] = elForm.maxB.value;
         this.mergePreferences();
         this.preferencesToLS();
+        window.location = '../output/output.html';
         if (elForm.minC.value > elForm.maxC.value) { 
-            alert(Invalid range: min must be less than max);
+            alert("Invalid range: min must be less than max");
         } else if (elForm.minA.value > elForm.maxA.value) { 
-            alert(Invalid range: min must be less than max.);
+            alert("Invalid range: min must be less than max.");
         } else if (elForm.minB.value > elForm.maxB.value) { 
-            alert(Invalid range: min must be less than max.);
+            alert("Invalid range: min must be less than max.");
         } else {
             window.location = '../output/output.html';
         }
@@ -67,7 +68,10 @@ var user = {
         localStorage.setItem('preferences', str);
     }
 }
-// user.submit.addEventListener('click', prefHandler, true);
+user.elForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    user.prefHandler(e, this);
+    } , true);
 
 var beers = []; // array for beer objects
 function Beer(style, color, abv, bitter, idNum) { // beer object constructor
@@ -271,25 +275,3 @@ function onRunInput() {
 
 onRunInput();
 
-
-// function test() { // tests all current defined methods for database object
-//     user.name = 'Ned Stark',
-//     user.currentPreferences.abv = [2, 3];
-//     user.currentPreferences.bitterness = [1, 3];
-//     user.currentPreferences.color = [4, 5];
-
-
-
-    compileBeers();
-
-    console.log(database.beers);
-    console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-    console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-    console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
-
-
-    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
-
-}
-
-test();
