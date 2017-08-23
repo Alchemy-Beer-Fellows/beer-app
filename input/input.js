@@ -1,39 +1,24 @@
 var user = {
-    
-
-
     name: '',
 
 
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
-        color: ['minC', 'maxC'],
-        abv: ['minA', 'maxA'],
-        bitterness: ['minB', 'maxB']
+        color: ['min', 'max'],
+        abv: [],
+        bitterness: []
     },
 
     previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
 
     /*local storage methods*/
-    elForm: document.getElementById('getPreferences'),
+    // submit: document.getElementById(),
 
-    prefHandler: function(e, elForm) {
-        this.getPreviousPreferences();
-        user.currentPreferences.color[0] = elForm.minC.value;
-        user.currentPreferences.color[1] = elForm.maxC.value;
-        user.currentPreferences.abv[0] = elForm.minA.value;
-        user.currentPreferences.abv[1] = elForm.maxA.value;
-        user.currentPreferences.bitterness[0] = elForm.minB.value;
-        user.currentPreferences.bitterness[1] = elForm.maxB.value;
-        this.mergePreferences();
-        this.preferencesToLS();
-    },
+    // prefHandler: function() {
+    //     user.currentPreferences
+    //     preferencesToLS('beer', this.currentPreferences);
+    // },
     getPreviousPreferences: function() {
-        if(localStorage.getItem.preferences) {
-            return JSON.parse(localStorage.getItem('preferences'));
-        } else {
-            return [];
-        }
-        
+        return JSON.parse(localStorage.getItem('preferences'));
     },
 
     mergePreferences: function() {
@@ -44,10 +29,7 @@ var user = {
         localStorage.setItem('preferences', str);
     }
 }
-user.elForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    user.prefHandler(e, this);
-    } , true);
+// user.submit.addEventListener('click', prefHandler, true);
 
 var beers = []; // array for beer objects
 function Beer(style, color, abv, bitter, idNum) { // beer object constructor
@@ -73,7 +55,7 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     // for(var i = 0; i < styles.length; i++) { // repeat for all styles
     //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
     // }
-
+ 
     //                      name              color  abv  bitt  ID
     new Beer('Lite American Lager', '1', '2', '1', '01');
     new Beer('American Lager', ' 1', '3', '1', '02');
@@ -239,23 +221,24 @@ var database = {
     }
 }
 
+
 function test() { // tests all current defined methods for database object
     user.name = 'Ned Stark',
-        user.currentPreferences.abv = [2, 3];
-    user.currentPreferences.bitterness = [1, 3];
-    user.currentPreferences.color = [4, 5];
+        user.currentPreferences.abv = [0, 7];
+    user.currentPreferences.bitterness = [3, 5];
+    user.currentPreferences.color = [0, 17];
 
 
-//     compileBeers();
+    compileBeers();
 
-//     console.log(database.beers);
-//     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-//     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-//     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
+    console.log(database.beers);
+    console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
+    console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
+    console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
 
 
-//     console.log('color + abv + bitterness: ' + database.findBeersWithAll());
+    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
 
-// }
+}
 
-// test();
+test();
