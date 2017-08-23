@@ -28,11 +28,11 @@ var user = {
         this.mergePreferences();
         this.preferencesToLS();
         if (elForm.minC.value > elForm.maxC.value) { 
-            alert(Invalid range: min must be less than max);
+            alert('Invalid range: min must be less than max');
         } else if (elForm.minA.value > elForm.maxA.value) { 
-            alert(Invalid range: min must be less than max.);
+            alert('Invalid range: min must be less than max.');
         } else if (elForm.minB.value > elForm.maxB.value) { 
-            alert(Invalid range: min must be less than max.);
+            alert('Invalid range: min must be less than max.');
         } else {
             window.location = '../output/output.html';
         }
@@ -250,7 +250,7 @@ var database = {
         return this.goodAll;
 
     }
-}
+};
 
 
 function greetUser() {
@@ -265,31 +265,9 @@ function onRunInput() {
         greetUser();
     }
     else {
-        user.name = 'Guest'
+        user.name = ('Guest');
     }
 }
 
 onRunInput();
 
-
-// function test() { // tests all current defined methods for database object
-//     user.name = 'Ned Stark',
-//     user.currentPreferences.abv = [2, 3];
-//     user.currentPreferences.bitterness = [1, 3];
-//     user.currentPreferences.color = [4, 5];
-
-
-
-    compileBeers();
-
-    console.log(database.beers);
-    console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-    console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-    console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
-
-
-    console.log('color + abv + bitterness: ' + database.findBeersWithAll());
-
-}
-
-test();

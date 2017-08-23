@@ -299,15 +299,15 @@ var database = {
         return threeBeers;
     },
 
-    displayChoices: function (){ 
+    displayChoices: function (){
         if(event){
             event.preventDefault();
         }
 
-        if(this.goodAll > 0) {
+        if(this.goodAll.length > 0) {
             var threeBeers = this.getChoices();
             for (var i = 1; i <= 3; i ++){
-                this.fillInChoice(i, threeBeers[i -1]);
+                this.fillInChoice(i, threeBeers[i - 1]);
             }
         }
         else {
@@ -321,8 +321,7 @@ var database = {
             elButton.setAttribute('class', 'hidden');
         }
     }
-}
-
+};
 
 function onRunOutput() {
     user.getPreviousNames();
