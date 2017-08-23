@@ -54,7 +54,7 @@ opacity: 0.8;
 
 #getPreferences{
     text-align: center;
-    
+
 
 }
 
@@ -83,7 +83,7 @@ opacity: 0.8;
  /* test for buttons */
 /*  */
 /*  */
-.switch {
+/* .switch {
     position: relative;
     width: 14rem;
     padding: 0 1rem;
@@ -141,9 +141,9 @@ opacity: 0.8;
       }
     }
   }
-  
-  // Just for styling
-  
+   */
+  /* // Just for styling */
+/*   
   body{
     background: #333;  
     color: #999;
@@ -152,7 +152,7 @@ opacity: 0.8;
     left:50%;
     margin-left: -9rem;
     margin-top:-3rem;
-  }
+  } */
   
 /*  */
   /*  */
