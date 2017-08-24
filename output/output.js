@@ -319,11 +319,12 @@ var database = {
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
             threeBeers[i] = beers[randomIndex];
+
         }
         return threeBeers;
     },
 
-    displayChoices: function (){ 
+    displayChoices: function (){
         if(event){
             event.preventDefault();
         }
@@ -461,7 +462,9 @@ var database = {
         }
     }
 
+
 };
+
 
 
 function onRunOutput() {

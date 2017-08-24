@@ -7,7 +7,7 @@ function getLS(){
     }
 };
 
-var names =[];
+var names = [];
 
 var elForm = document.getElementById('getName');
 
