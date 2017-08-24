@@ -1,9 +1,18 @@
  /* html, body {
     margin: 0;
-    padding: 0;
+    padding: 45px;
     width: auto;
     height: 100%;
-     background: tan; 
+
+    background: #82D5F0;
+    border: 12px double black;
+}
+
+h1{
+  font-family: 'Sigmar One', cursive;
+  font-size: 40pt;
+  text-align: center;
+
 }
  
 nav {
@@ -53,8 +62,9 @@ opacity: 0.8;
 } */
  /* #getPreferences{
     text-align: center;
+
 } */
- /* radio test ....................................................................................................................*/
+ 
 
  #colorMin,
  #colorMax,
@@ -190,3 +200,39 @@ opacity: 0.8;
   margin-left: -9rem;
   margin-top: -3rem;
 }  */
+
+/*     font-size: 20pt;
+}
+
+#colorMin{
+    display: inline-block;
+    margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
+
+}
+#colorMax{
+    display: inline-block;
+    margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
+}
+#abvMin{
+    display: inline-block;
+    margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
+}
+#abvMax{
+    display: inline-block;
+    margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
+}
+#bitterMin{
+    display: inline-block;
+    margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
+}
+#bitterMax{
+    display: inline-block;
+    margin: 5%;
+    background-color: rgba(219, 0, 0, .5);
+}
+ */

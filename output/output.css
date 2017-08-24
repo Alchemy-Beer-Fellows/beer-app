@@ -5,31 +5,70 @@
 
 html, body {
     margin: 0;
-    padding: 0;
+    padding: 45px;
     width: auto;
     height: 100%;
     background: #82D5F0;
+    border: 10px double black;
+}
+
+html {
+    min-width: 54em;
+}
+
+body {
+    min-width: 48em;
+}
+
+h1{
+    text-align: center;
+    font-family: 'BellBottom';
+    color: white;
+    text-shadow: -10px 10px 0px rgba(255, 0, 0, 1), 
+                 -20px 20px 0px rgba(255, 89, 0, .75),
+                 -30px 30px 0px rgba(255, 145, 0, .25),
+                 -40px 40px 0px rgba(255, 210, 0, .5);
+    font-size: 70pt;
+    margin: 1px;
+}
+
+h2{
+    text-align: center;
+    margin: 0;
+}
+
+h3{
+    font-family: 'Sigmar One', cursive;
+    text-align: center;
+    margin: 50px;
+}
+
+ul{
+    list-style-type: none;
 }
 
 #pref{
-    background-color: #E5DAD8;
+    background-color: white;
+    background: -webkit-linear-gradient(left, rgba(255, 0, 0, .5), rgba(250, 211, 15, .75));
     text-align: center;
     display: flex;
     justify-content: space-around;
     border: 2px solid black;
     width: 90%;
+    min-width: 44.7em;
     margin: auto;
-
 }
 
 #pref p{
     width: 14%;
 }
 
-/* Hey Morgan! just added this for the preferences display. I shouldn't mess with anything, but feel free to delete it if it does */
 .preference {
     text-align: right;
+    font-family: 'Sigmar One', cursive;
+    font-size: 10pt;
 }
+
 .range {
     text-align: left;
 }
@@ -37,15 +76,18 @@ html, body {
 #mainBeer{
     margin: 0 auto;
     width: 80%;
+    min-width: 45em;
     height: 50%;
     display: flex;
     justify-content: space-between;
     align-content: center;
+    /* text-align: center; */
+
 }
 
-#mainBeer img{
+/* #mainBeer img{
     height:;
-}
+} */
 
 #mainBeer div{
     width: 30%;
@@ -54,19 +96,23 @@ html, body {
     margin: 1em 0;
     border: 1px solid black;
     padding: 5px;
+    background-image: url('../assets/wood.jpg');
+    font-family: 'Cabin Sketch', cursive;
 }
 
-#mainBeer>h2{
-    width: 100%;
-    text-align: center;
-    padding-top: 4em;
+#mainBeer h5{
+     width: 70%;
+    border-bottom: 2px solid black;
+    font-size: 20pt;
 }
+ 
 
 
 #button{
     font-family: 'Baloo Bhaijaan', cursive;
     /* background-color:#E5DAD8; */
     width: 20%;
+    min-width: 14em;
     height: 30px;
     /* border: solid black 1px; */
     margin: auto;
@@ -76,68 +122,90 @@ html, body {
     align-content: space-around;
 }
 
-h2{
-    text-align: center;
-    margin: 0;
-}
 
 #bottomBeer{
     width: 80%;
+    min-width: 22em;
     height: 50%;
+    overflow: auto;
     display: flex;
     justify-content: space-between;
     align-content: center;
-    margin: 10em auto;
+    margin: 5em auto;
+    border: 12px double black;
+    padding: 45px;
+    background-image: url('../assets/wood.jpg');
+    font-size: 20pt;
+    font-family: 'Cabin Sketch', cursive;
+    text-align: center;
 }
 
 #bottomBeer div{
      width: 30%;
+    min-width: 7em;
     height: auto;
 }
 
-h3{
+#bottomBeer h3{
+    text-align: center;
+    font-size: 20pt;
+    margin: 0;
+    border-bottom: 2px solid black;
+}
+
+
+.alt-beer {
+    display: initial;
+    width: 100%;
     text-align: center;
 }
 
-h1{
-       text-align: center;
-    font-family: 'BellBottom';
-    color: white;
-    text-shadow: -10px 10px 0px rgba(255, 0, 0, 1), 
-                 -20px 20px 0px rgba(255, 89, 0, .75),
-                 -30px 30px 0px rgba(255, 145, 0, .25),
-                 -40px 40px 0px rgba(255, 210, 0, .5);
-    font-size: 70pt;
+.alt-beer:hover div {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    top: -12px;
+    right: -146px;
+    display: initial;
 }
 
-nav {
-    max-height: 150px;
-    max-width: 38px;
-    position: fixed;
-    top: 200px;
-    right: 5px;
+#past-results {
     display: flex;
     flex-direction: column;
+}
+
+.previous-beer-preferences, .previous-beer-lists {
+    display: flex;
     justify-content: space-around;
-    align-content: center;
 }
 
-h5 {
-    margin: 0;
+.previous-beer-lists h5 {
+    text-align: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-nav img {
-    width: 100%;
-    height: auto;
+.alt-beer:hover div {
+    
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    top: -12px;
+    right: -146px;
+    display: initial;
 }
 
 .hidden {
     display: none;
+}
+
+footer{
+    border: 1px solid black;
+    background-color: #C4C4C4;
+    padding: 7px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15pt;
+}
+
+a{
+    text-decoration: none;
 }

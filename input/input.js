@@ -25,20 +25,24 @@ var user = {
         user.currentPreferences.bitterness[1] = elForm.maxB.value;
         this.mergePreferences();
         this.preferencesToLS();
-        if (elForm.minC.value > elForm.maxC.value) { 
-            alert('Invalid range: min must be less than max');
-        } else if (elForm.minA.value > elForm.maxA.value) { 
+
+
+        if (elForm.minC.value > elForm.maxC.value) {
             alert('Invalid range: min must be less than max.');
-        } else if (elForm.minB.value > elForm.maxB.value) { 
+            return false;
+        } else if (elForm.minA.value > elForm.maxA.value) {
             alert('Invalid range: min must be less than max.');
+            return false;
+        } else if (elForm.minB.value > elForm.maxB.value) {
+            alert('Invalid range: min must be less than max.');
+            return false;
         } else {
             window.location = '../output/output.html';
         }
-        
     },
 
     getPreviousNames: function() {
-        if(localStorage.getItem('name')) {
+        if (localStorage.getItem('name')) {
             this.allNames = JSON.parse(localStorage.getItem('name'));
             this.name = this.allNames.slice(-1)[0];
             this.currentPreferences.name = this.name;
@@ -46,14 +50,13 @@ var user = {
     },
 
     getPreviousPreferences: function() {
-        if(localStorage.getItem('preferences')) {
-            this.previousPreferences = ( JSON.parse(localStorage.getItem('preferences')));
+        if (localStorage.getItem('preferences')) {
+            this.previousPreferences = (JSON.parse(localStorage.getItem('preferences')));
             return JSON.parse(localStorage.getItem('preferences'));
         } else {
             this.previousPreferences = [];
             return [];
         }
-        
 
     },
 
@@ -64,8 +67,12 @@ var user = {
         var str = JSON.stringify(this.previousPreferences);
         localStorage.setItem('preferences', str);
     }
-}
-// user.submit.addEventListener('click', prefHandler, true);
+};
+
+user.elForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    user.prefHandler(e, this);
+}, true);
 
 var beers = []; // array for beer objects
 function Beer(style, color, abv, bitter, idNum) { // beer object constructor
@@ -91,8 +98,6 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     // for(var i = 0; i < styles.length; i++) { // repeat for all styles
     //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
     // }
-
-
     //         name              color  abv  bitt  ID
     new Beer('Lite American Lager', '1', '2', '1', '1');
     new Beer('American Lager', ' 1', '3', '1', '2');
@@ -176,8 +181,7 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Belgian Dubbel', '1', '4', '2', '80');
     new Beer('Belgian Tripel', '2', '5', '2', '81');
     new Beer('Belgian Dark Strong Ale', '4', '5', '2', '82');
-}
-
+};
 
 /*main object literal, holding beer object array, methods to sort, and methods to push to local storage*/
 var database = {
@@ -201,7 +205,7 @@ var database = {
             goodBeersB,
             goodBeersAB = [],
 
-        goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
+            goodBeersA = this.findBeersWithin(parameterA, user.currentPreferences[parameterA][0], user.currentPreferences[parameterA][1]);
         goodBeersB = this.findBeersWithin(parameterB, user.currentPreferences[parameterB][0], user.currentPreferences[parameterB][1]);
 
         for (var i = 0; i < goodBeersA.length; i++) {
@@ -211,7 +215,7 @@ var database = {
                 }
             }
         }
-    
+
         var firstParam,
             secondParam;
         if (parameterA === 'color' || parameterB === 'color') {
@@ -250,7 +254,6 @@ var database = {
     }
 };
 
-
 function greetUser() {
     var elGreeting = document.getElementById('greeting');
     elGreeting.innerText = 'Hi ' + user.name + '......................';
@@ -259,13 +262,39 @@ function greetUser() {
 function onRunInput() {
     user.getPreviousPreferences();
     user.getPreviousNames();
-    if(user.name) {
+    if (user.name) {
         greetUser();
+    } else {
+        user.name = 'Guest';
     }
-    else {
-        user.name = ('Guest');
+
+    if (user.previousPreferences) {
+        for (var i = 0; i <= user.previousPreferences.length - 1; i++) {
+            if (user.previousPreferences[i].name === user.name) {
+                var returnPreferences = user.previousPreferences[i];
+                var minColorValue = returnPreferences.color[0];
+                var maxColorValue = returnPreferences.color[1];
+                var minAbvValue = returnPreferences.abv[0];
+                var maxAbvValue = returnPreferences.abv[1];
+                var minBitternessValue = returnPreferences.bitterness[0];
+                var maxBitternessValue = returnPreferences.bitterness[1];
+                var minColorEle = document.querySelector("#colorMin input[value='" + minColorValue + "']");
+                var maxColorEle = document.querySelector("#colorMax input[value='" + maxColorValue + "']");
+                var minAbvEle = document.querySelector("#abvMin input[value='" + minAbvValue + "']");
+                var maxAbvEle = document.querySelector("#abvMax input[value='" + maxAbvValue + "']");
+                var minBitternessEle = document.querySelector("#bitterMin input[value='" + minBitternessValue + "']");
+                var maxBitternessEle = document.querySelector("#bitterMax input[value='" + maxBitternessValue + "']");
+                minColorEle.setAttribute('checked', 'checked');
+                maxColorEle.setAttribute('checked', 'checked');
+                minAbvEle.setAttribute('checked', 'checked');
+                maxAbvEle.setAttribute('checked', 'checked');
+                minBitternessEle.setAttribute('checked', 'checked');
+                maxBitternessEle.setAttribute('checked', 'checked');
+                break;
+            }
+
+        }
     }
 }
 
 onRunInput();
-
