@@ -305,7 +305,6 @@ function onRunInput() {
     } else {
         user.name = 'Guest';
     }
-
     if (user.previousPreferences) {
         for (var i = 0; i <= user.previousPreferences.length - 1; i++) {
             if (user.previousPreferences[i].name === user.name) {
