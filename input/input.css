@@ -1,11 +1,15 @@
  html,
  body {
+   text-align: center;
    margin: 0;
    padding: 45px;
    width: auto;
    height: 100%;
    background: #82D5F0;
    /* border: 12px double black; */
+ }
+ legend{
+   margin: 0 auto;
  }
 
   h1 {
@@ -31,7 +35,7 @@
  #bitterMax {
    position: relative;
    width: 100%;
-   padding: 0rem 4rem 1rem 1rem;
+   padding: 0rem 4rem 3rem 1rem;
    font-family: verdana;
  }
 
@@ -50,7 +54,7 @@
 
  .switch__label {
    display: inline-block;
-   width: 2rem;
+   /* width: 2rem; */
    padding: 1rem;
    text-align: center;
    cursor: pointer;
@@ -65,8 +69,8 @@
    width: 3rem;
    height: 3rem;
    position: absolute;
-   background: #FFE144;
-   top: 1.5rem;
+   /* background: #FFE144; */
+   top: 4rem;
    left: 0;
    border-radius: 50%;
    transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), background 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
@@ -78,55 +82,43 @@
  #abvMax input#maxA1:checked~.switch__indicator,
  #bitterMin input#minB1:checked~.switch__indicator,
  #bitterMax input#maxB1:checked~.switch__indicator {
-   background: #FFE144;
-   transform: translate3d(1.2rem, 0, 0);
+   background: #E3E2E5;
+   transform: translate3d(26.5rem, 0, 0);
  }
 
 
  #abvMin input#minA2:checked~.switch__indicator,
- #abvMax input#maxA2:checked~.switch__indicator,
- #bitterMin input#minB2:checked~.switch__indicator,
- #bitterMax input#maxB2:checked~.switch__indicator {
-   background: #FAA445;
-   transform: translate3d(5.5rem, 0, 0);
+ #abvMax input#maxA2:checked~.switch__indicator {
+   background: #ACABAD;
+   transform: translate3d(34rem, 0, 0);
  }
 
  #abvMin input#minA3:checked~.switch__indicator,
- #abvMax input#maxA3:checked~.switch__indicator,
- #bitterMin input#minB3:checked~.switch__indicator,
- #bitterMax input#maxB3:checked~.switch__indicator {
-   background: #B6694A;
-   transform: translate3d(10rem, 0, 0);
+ #abvMax input#maxA3:checked~.switch__indicator {
+   background: #727173;
+   transform: translate3d(41rem, 0, 0);
  }
 
  #abvMin input#minA4:checked~.switch__indicator,
- #abvMax input#maxA4:checked~.switch__indicator,
- #bitterMin input#minB4:checked~.switch__indicator,
- #bitterMax input#maxB4:checked~.switch__indicator {
-   background: #54383D;
-   transform: translate3d(14.5rem, 0, 0);
+ #abvMax input#maxA4:checked~.switch__indicator {
+   background: #3A3A3B;
+   transform: translate3d(48.5rem, 0, 0);
  }
 
 
  #abvMin input#minA5:checked~.switch__indicator,
- #abvMax input#maxA5:checked~.switch__indicator,
- #bitterMin input#minB5:checked~.switch__indicator,
- #bitterMax input#maxB5:checked~.switch__indicator {
+ #abvMax input#maxA5:checked~.switch__indicator {
    background: black;
-   transform: translate3d(18.5rem, 0, 0);
+   transform: translate3d(55.5rem, 0, 0);
  }
 
  #abvMin input[type="radio"]:not(:checked),
  #abvMin input[type="radio"]:checked,
  #abvMax input[type="radio"]:not(:checked),
- #abvMax input[type="radio"]:checked,
- #bitterMin input[type="radio"]:not(:checked),
- #bitterMin input[type="radio"]:checked,
- #bitterMax input[type="radio"]:not(:checked),
- #bitterMax input[type="radio"]:checked {
+ #abvMax input[type="radio"]:checked {
    display: none;
  }
-/* Image radio buttons........................................................ */
+/* beer images........................................................ */
 
  input[type="radio"]{
   display:none;
@@ -193,6 +185,68 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+/* Bitter images.................................................. */
+#minB1[type="radio"] + label,
+#maxB1[type="radio"] + label
+{
+   background-image:url(../assets/hop1.jpg);
+   background-size: cover;
+   border-radius: 100%;
+   height: 100px;
+   width: 80px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+#minB2[type="radio"] + label,
+#maxB2[type="radio"] + label
+{
+   background-image:url(../assets/hop2.jpg);
+   background-size: cover;
+   border-radius: 100%;
+   height: 100px;
+   width: 80px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+#minB3[type="radio"] + label,
+#maxB3[type="radio"] + label
+{
+   background-image:url(../assets/hop3.jpg);
+   background-size: cover;
+   border-radius: 100%;
+   height: 100px;
+   width: 80px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+
+#minB4[type="radio"] + label,
+#maxB4[type="radio"] + label
+{
+   background-image:url(../assets/hop4.jpg);
+   background-size: cover;
+   border-radius: 100%;
+   height: 100px;
+   width: 80px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+#minB5[type="radio"] + label,
+#maxB5[type="radio"] + label
+{
+   background-image:url(../assets/hop5.jpg);
+   background-size: cover;
+   border-radius: 100%;
+   height: 100px;
+   width: 80px;
+   display:inline-block;
+   padding: 5px 5px 5px 5px;
+   cursor:pointer;
+}
 
 #minC1[type="radio"]:checked + label,
 #minC2[type="radio"]:checked + label,
@@ -203,7 +257,17 @@
 #maxC2[type="radio"]:checked + label,
 #maxC3[type="radio"]:checked + label,
 #maxC4[type="radio"]:checked + label,
-#maxC5[type="radio"]:checked + label
+#maxC5[type="radio"]:checked + label,
+#minB1[type="radio"]:checked + label,
+#minB2[type="radio"]:checked + label,
+#minB3[type="radio"]:checked + label,
+#minB4[type="radio"]:checked + label,
+#minB5[type="radio"]:checked + label,
+#maxB1[type="radio"]:checked + label,
+#maxB2[type="radio"]:checked + label,
+#maxB3[type="radio"]:checked + label,
+#maxB4[type="radio"]:checked + label,
+#maxB5[type="radio"]:checked + label
 {
    border: 3px solid black;
 }
