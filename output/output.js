@@ -48,6 +48,10 @@ var user = {
         user.currentPreferences = user.thisUserPrevPrefs[index];
     },
 
+    switchToCurrentUser: function() {
+        user.currentPreferences = user.previousPreferences[user.previousPreferences.length - 1];
+    },
+
     preferenceRange: function(property) {
         var innerText = this.currentPreferences[property][0] + ' - ' + this.currentPreferences[property][1];
         var validRange = this.currentPreferences[property][0] <= this.currentPreferences[property][1];;
@@ -315,18 +319,22 @@ var database = {
     getChoices: function (){
         var threeBeers = [];
         var displayNum = 3;
+        console.log(this.goodAll)
         if(this.goodAll.length < 3) {
             displayNum = this.goodAll.length;
         }
         for (var i = 0; i < displayNum; i ++){
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
-            console.log(randomIndex);
+            console.log('i: ' + i + '    randomIndex: ' + randomIndex);
             if(!(threeBeers.includes(beers[randomIndex]))) {
                 threeBeers[i] = beers[randomIndex];
+            }
+            else {
                 i--;
             }
         }
+        console.log('goodAll: ' + this.goodAll);
         return threeBeers;
     },
 
@@ -335,12 +343,16 @@ var database = {
             event.preventDefault();
         }
 
+        user.switchToCurrentUser();
+
         if(this.goodAll.length > 0) {
             var threeBeers = this.getChoices();
-            console.log(threeBeers);
             for (var i = 0; i < threeBeers.length; i++){
                 this.fillInChoice(3 - ((i + 1) % 3), threeBeers[i]);
             }
+
+            var elButtonLabel = document.getElementById('button-label');
+            elButtonLabel.innerText = 'Showing ' + threeBeers.length + ' of ' + this.goodAll.length + ' styles matching your preferences.';
         }
         else {
             var elMainBeer = document.getElementById('mainBeer');
