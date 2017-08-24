@@ -350,6 +350,11 @@ var database = {
             elH2.innerText = 'You\'re too picky!';
             elMainBeer.appendChild(elH2);
 
+            var tryButton = document.createElement('a');
+            tryButton.setAttribute('id', 'tbButton');
+            tryButton.innerHTML = '<a href = \'../input/input.html\' id= \'tryAgain\'>TRY IT AGAIN</a>';
+            elMainBeer.appendChild(tryButton);
+
             var elButton = document.getElementById('button');
             elButton.setAttribute('class', 'hidden');
         }
