@@ -16,31 +16,6 @@ var user = {
 
     elForm: document.getElementById('getPreferences'),
 
-    prefHandler: function(e, elForm) {
-        user.currentPreferences.color[0] = elForm.minC.value;
-        user.currentPreferences.color[1] = elForm.maxC.value;
-        user.currentPreferences.abv[0] = elForm.minA.value;
-        user.currentPreferences.abv[1] = elForm.maxA.value;
-        user.currentPreferences.bitterness[0] = elForm.minB.value;
-        user.currentPreferences.bitterness[1] = elForm.maxB.value;
-        this.mergePreferences();
-        this.preferencesToLS();
-
-
-        if (elForm.minC.value > elForm.maxC.value) {
-            alert('Invalid range: min must be less than max.');
-            return false;
-        } else if (elForm.minA.value > elForm.maxA.value) {
-            alert('Invalid range: min must be less than max.');
-            return false;
-        } else if (elForm.minB.value > elForm.maxB.value) {
-            alert('Invalid range: min must be less than max.');
-            return false;
-        } else {
-            window.location = '../output/output.html';
-        }
-    },
-
     getPreviousNames: function() {
         if (localStorage.getItem('name')) {
             this.allNames = JSON.parse(localStorage.getItem('name'));
@@ -66,9 +41,72 @@ var user = {
     preferencesToLS: function() {
         var str = JSON.stringify(this.previousPreferences);
         localStorage.setItem('preferences', str);
+    },
+
+    prefHandler: function(e, elForm) {
+        user.currentPreferences.color[0] = elForm.minC.value;
+        user.currentPreferences.color[1] = elForm.maxC.value;
+        user.currentPreferences.abv[0] = elForm.minA.value;
+        user.currentPreferences.abv[1] = elForm.maxA.value;
+        user.currentPreferences.bitterness[0] = elForm.minB.value;
+        user.currentPreferences.bitterness[1] = elForm.maxB.value;
+        this.mergePreferences();
+        this.preferencesToLS();
+
+
+        if (elForm.minC.value > elForm.maxC.value) {
+            alert('Invalid range: min must be less than max.');
+            return false;
+        } else if (elForm.minA.value > elForm.maxA.value) {
+            alert('Invalid range: min must be less than max.');
+            return false;
+        } else if (elForm.minB.value > elForm.maxB.value) {
+            alert('Invalid range: min must be less than max.');
+            return false;
+        } else {
+            window.location = '../output/output.html';
+        }
+    },
+
+    manageInputRanges: function(e) {
+        if(RegExp(/^(min|max)[ABC]/).test(e.target.id)){
+            var minORmax = '',
+                CAB = '',
+                valueRange = [];
+
+            CAB = e.target.id.charAt(3);
+            if(RegExp(/^min/).test(e.target.id)) {
+                minORmax = 'max';
+                var minValue = e.target.id.charAt(4);
+                for(var i = 1; i < minValue; i++) {
+                    valueRange.push(i);
+                }
+            }
+            else if(RegExp(/^max/).test(e.target.id)) {
+                minORmax = 'min';
+                var maxValue = e.target.id.charAt(4);
+                for(var i = (parseInt(maxValue) + 1); i <= 5; i++) {
+                    valueRange.push(i);
+                }
+            }
+            console.log(minORmax+CAB+valueRange);
+            for(var i = 1; i <= 5; i++) {
+                var elButton = document.getElementById(minORmax + CAB + i);
+                elButton.disabled = false;
+            }
+
+            for(var i = 0; i < valueRange.length; i++) {
+                var elButton = document.getElementById(minORmax + CAB + valueRange[i]);
+                elButton.disabled = true;
+                console.log(elButton);
+            }
+        }
     }
 };
 
+user.elForm.addEventListener('click', function(e) {
+    user.manageInputRanges(e);
+});
 user.elForm.addEventListener('submit', function(e) {
     e.preventDefault();
     user.prefHandler(e, this);
