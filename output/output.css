@@ -216,12 +216,22 @@ ul{
 }
 
 .alt-beer:hover div {
-    
     display: inline-block;
     position: relative;
     text-align: left;
     top: -12px;
-    right: -146px;
+    right: -107px;
+    font-size: 0.8em;
+    display: initial;
+}
+
+.past-beer:hover div {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    top: -12px;
+    right: -107px;
+    font-size: 0.8em;
     display: initial;
 }
 
