@@ -411,6 +411,16 @@ var database = {
 
         var elSubContainer = document.createElement('div');
         elSubContainer.setAttribute('class', 'sub-container');
+
+        var PrefDiv = document.getElementById('div');
+        var elPrevHead = document.createElement('h6');
+            elPrevHead.setAttribute('class', 'container');
+            elPrevHead.innerText = ( 'Preference ' + (user.thisUserPrevPrefs.length - index) );
+            console.log('Preference ' + 'previous-beer-preferences.length' - index );
+            elSubContainer.appendChild(elPrevHead);
+
+
+
             var elPreferencesDiv = document.createElement('div');
             elPreferencesDiv.setAttribute('class', 'previous-beer-preferences');
                 var elPColor = document.createElement('p');
