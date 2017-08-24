@@ -52,8 +52,7 @@ h3{
 h4{
     text-align: center;
     font-family: 'Sigmar One', cursive;
-    font-size: 15pt;
-    /* margin: 195px; */
+    font-size: 19pt;
 }
 
 img{
@@ -114,13 +113,13 @@ nav img {
    padding: 3%;
 } */
 
-#right{
+/* #right{
     float: right;
 }
 
 #right1{
     float: right;
-}
+} */
 #sign-in-button{
     width: 150px;
     height: 30px;
@@ -128,5 +127,42 @@ nav img {
 }
 
 #nameInput{
-    font-size: 20px;
+    font-size: 16pt;
+}
+
+#sample{
+    width: 45%;
+    font-size: 15pt;
+}
+
+#about{
+    border: 10px double black;
+    position: absolute;
+    bottom: -531px;
+    left: 7%;
+    width: 85%;
+    min-width: 51em;
+    margin: 3em auto;
+    padding: 10px;
+
+}
+
+#right{
+    float: right;
+}
+
+#marga{
+    width: 50px;
+}
+
+#martini{
+    width: 30px;
+}
+
+#rocks{
+    width: 50px;
+}
+
+#glass{
+    width: 50px;
 }
