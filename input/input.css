@@ -175,7 +175,7 @@ opacity: 0.8;
  #bitterMax input#maxB5:checked ~ .switch__indicator
 
  {
-   background: #261E16;
+   background: black;
    transform: translate3d(18.5rem, 0, 0);
  }
 
@@ -193,16 +193,7 @@ opacity: 0.8;
  #bitterMax input[type="radio"]:checked {
    display: none;
  }
- /* body {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -9rem;
-  margin-top: -3rem;
-}  */
-
-/*     font-size: 20pt;
-}
+/* 
 
 #colorMin{
     display: inline-block;
@@ -234,5 +225,5 @@ opacity: 0.8;
     display: inline-block;
     margin: 5%;
     background-color: rgba(219, 0, 0, .5);
-}
- */
+} */
+
