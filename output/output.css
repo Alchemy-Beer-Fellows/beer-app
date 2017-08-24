@@ -201,6 +201,10 @@ ul{
     justify-content: space-around;
 }
 
+.previous-beer-lists {
+    margin-bottom: 2em;
+}
+
 .previous-beer-lists h5 {
     text-align: center;
 }
