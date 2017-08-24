@@ -12,7 +12,12 @@
     background-color: #82D5F0; 
 }
 
+html {
+    min-width: 54em;
+}
+
 body{
+
     background-image: url('./assets/beerglass.png');
     background-size: contain;
     background-repeat: no-repeat;

@@ -1,8 +1,9 @@
-html, body {
+ /* html, body {
     margin: 0;
     padding: 45px;
     width: auto;
     height: 100%;
+
     background: #82D5F0;
     border: 12px double black;
 }
@@ -11,8 +12,9 @@ h1{
   font-family: 'Sigmar One', cursive;
   font-size: 40pt;
   text-align: center;
-}
 
+}
+ 
 nav {
     max-height: 150px;
     max-width: 38px;
@@ -57,11 +59,149 @@ font-size: 36px;
 padding-top: 14px;
 z-index: 100;
 opacity: 0.8;
-}
-
-#getPreferences{
+} */
+ /* #getPreferences{
     text-align: center;
-    font-size: 20pt;
+
+} */
+ 
+
+ #colorMin,
+ #colorMax,
+ #abvMin,
+ #abvMax,
+ #bitterMin,
+ #bitterMax
+  {
+   position: relative;
+   width: 100%;
+   padding: 0rem 4rem 1rem 1rem;
+   font-family: verdana;
+ }
+
+ #colorMin:before,
+ #colorMax:before,
+ #abvMin:before,
+ #abvMax:before,
+ #bitterMin:before,
+ #bitterMax:before {
+   content: '  ';
+   position: absolute;
+   left: 0;
+   z-index: -1;
+   width: 100%;
+   height: 3rem;
+   border-radius: 30px;
+ }
+
+ .switch__label {
+   display: inline-block;
+   width: 2rem;
+   padding: 1rem;
+   text-align: center;
+   cursor: pointer;
+   transition: color 200ms ease-out;
+ }
+
+ .switch__label:hover {
+   color: white;
+ }
+
+ .switch__indicator {
+   width: 4rem;
+   height: 4rem;
+   position: absolute;
+   background: #FFE144;
+   top: -.5rem;
+   left: 0;
+   border-radius: 50%;
+   transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), background 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
+   transform: translate3d(1rem, 0, 0);
+ }
+
+ #colorMin input#minC1:checked~.switch__indicator,
+ #colorMax input#maxC1:checked~.switch__indicator,
+ #abvMin input#minA1:checked ~ .switch__indicator,
+ #abvMax input#maxA1:checked ~ .switch__indicator,
+ #bitterMin input#minB1:checked ~ .switch__indicator,
+ #bitterMax input#maxB1:checked ~ .switch__indicator 
+
+ {
+   background: #FFE144;
+   transform: translate3d(1.2rem, 0, 0);
+ }
+
+ #colorMin input#minC2:checked~.switch__indicator,
+ #colorMax input#maxC2:checked~.switch__indicator,
+ #abvMin input#minA2:checked ~ .switch__indicator,
+ #abvMax input#maxA2:checked ~ .switch__indicator,
+ #bitterMin input#minB2:checked ~ .switch__indicator,
+ #bitterMax input#maxB2:checked ~ .switch__indicator 
+
+ {
+   background: #FAA445;
+   transform: translate3d(5.5rem, 0, 0);
+ }
+
+ #colorMin input#minC3:checked~.switch__indicator,
+ #colorMax input#maxC3:checked~.switch__indicator,
+ #abvMin input#minA3:checked ~ .switch__indicator,
+ #abvMax input#maxA3:checked ~ .switch__indicator,
+ #bitterMin input#minB3:checked ~ .switch__indicator,
+ #bitterMax input#maxB3:checked ~ .switch__indicator
+
+ {
+   background: #B6694A;
+   transform: translate3d(10rem, 0, 0);
+ }
+
+ #colorMin input#minC4:checked~.switch__indicator,
+ #colorMax input#maxC4:checked~.switch__indicator,
+ #abvMin input#minA4:checked ~ .switch__indicator,
+ #abvMax input#maxA4:checked ~ .switch__indicator,
+ #bitterMin input#minB4:checked ~ .switch__indicator,
+ #bitterMax input#maxB4:checked ~ .switch__indicator 
+
+ {
+   background: #54383D;
+   transform: translate3d(14.5rem, 0, 0);
+ }
+
+ #colorMin input#minC5:checked~.switch__indicator,
+ #colorMax input#maxC5:checked~.switch__indicator,
+ #abvMin input#minA5:checked ~ .switch__indicator,
+ #abvMax input#maxA5:checked ~ .switch__indicator,
+ #bitterMin input#minB5:checked ~ .switch__indicator,
+ #bitterMax input#maxB5:checked ~ .switch__indicator
+
+ {
+   background: #261E16;
+   transform: translate3d(18.5rem, 0, 0);
+ }
+
+ #colorMin input[type="radio"]:not(:checked),
+ #colorMin input[type="radio"]:checked,
+ #colorMax input[type="radio"]:not(:checked),
+ #colorMax input[type="radio"]:checked,
+ #abvMin input[type="radio"]:not(:checked), 
+ #abvMin input[type="radio"]:checked,
+ #abvMax input[type="radio"]:not(:checked), 
+ #abvMax input[type="radio"]:checked,
+ #bitterMin input[type="radio"]:not(:checked), 
+ #bitterMin input[type="radio"]:checked,
+ #bitterMax input[type="radio"]:not(:checked), 
+ #bitterMax input[type="radio"]:checked {
+   display: none;
+ }
+ /* body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -9rem;
+  margin-top: -3rem;
+}  */
+
+/*     font-size: 20pt;
 }
 
 #colorMin{
@@ -95,3 +235,4 @@ opacity: 0.8;
     margin: 5%;
     background-color: rgba(219, 0, 0, .5);
 }
+ */

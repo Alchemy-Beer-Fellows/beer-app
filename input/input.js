@@ -26,6 +26,7 @@ var user = {
         this.mergePreferences();
         this.preferencesToLS();
 
+
         if (elForm.minC.value > elForm.maxC.value) {
             alert('Invalid range: min must be less than max.');
             return false;
@@ -266,6 +267,7 @@ function onRunInput() {
     } else {
         user.name = 'Guest';
     }
+
     if (user.previousPreferences) {
         for (var i = 0; i <= user.previousPreferences.length - 1; i++) {
             if (user.previousPreferences[i].name === user.name) {
