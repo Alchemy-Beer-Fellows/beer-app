@@ -68,7 +68,7 @@ var user = {
         }
     },
 
-    manageInputRanges: function(e) {
+    manageInputRanges: function(e, elForm) {
         if(RegExp(/^(min|max)[ABC]/).test(e.target.id)){
             var minORmax = '',
                 CAB = '',
@@ -81,12 +81,20 @@ var user = {
                 for(var i = 1; i < minValue; i++) {
                     valueRange.push(i);
                 }
+                if(!(elForm[minORmax + CAB].value >= minValue &&
+                     elForm[minORmax + CAB].value <= 5)) {
+                    elForm[minORmax + CAB].value = minValue;
+                }
             }
             else if(RegExp(/^max/).test(e.target.id)) {
                 minORmax = 'min';
                 var maxValue = e.target.id.charAt(4);
                 for(var i = (parseInt(maxValue) + 1); i <= 5; i++) {
                     valueRange.push(i);
+                }
+                if(!(elForm[minORmax + CAB].value >= 1 &&
+                     elForm[minORmax + CAB].value <= maxValue)) {
+                    elForm[minORmax + CAB].value = maxValue;
                 }
             }
             console.log(minORmax+CAB+valueRange);
@@ -105,7 +113,7 @@ var user = {
 };
 
 user.elForm.addEventListener('click', function(e) {
-    user.manageInputRanges(e);
+    user.manageInputRanges(e, this);
 });
 user.elForm.addEventListener('submit', function(e) {
     e.preventDefault();
