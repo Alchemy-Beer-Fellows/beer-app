@@ -271,3 +271,9 @@
 {
    border: 3px solid black;
 }
+
+#save{
+  width: 25%;
+  font-size: 15pt;
+  margin: 55px;
+}
