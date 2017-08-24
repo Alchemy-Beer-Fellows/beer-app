@@ -319,14 +319,12 @@ var database = {
     getChoices: function (){
         var threeBeers = [];
         var displayNum = 3;
-        console.log(this.goodAll)
         if(this.goodAll.length < 3) {
             displayNum = this.goodAll.length;
         }
         for (var i = 0; i < displayNum; i ++){
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
-            console.log('i: ' + i + '    randomIndex: ' + randomIndex);
             if(!(threeBeers.includes(beers[randomIndex]))) {
                 threeBeers[i] = beers[randomIndex];
             }
@@ -334,7 +332,6 @@ var database = {
                 i--;
             }
         }
-        console.log('goodAll: ' + this.goodAll);
         return threeBeers;
     },
 
@@ -432,7 +429,6 @@ var database = {
         var elPrevHead = document.createElement('h6');
             elPrevHead.setAttribute('class', 'container');
             elPrevHead.innerText = ( 'Preference ' + (user.thisUserPrevPrefs.length - index) );
-            console.log('Preference ' + 'previous-beer-preferences.length' - index );
             elSubContainer.appendChild(elPrevHead);
 
 
@@ -517,21 +513,3 @@ function onRunOutput() {
 }
 
 onRunOutput();
-
-
-// function test() { // tests all current defined methods for database object
-//     user.name = 'Ned Stark',
-//         user.currentPreferences.abv = [2, 3];
-//     user.currentPreferences.bitterness = [2, 3];
-//     user.currentPreferences.color = [3, 5];
-
-//     compileBeers();
-
-//     console.log(database.beers);
-//     console.log('color + bitterness: ' + database.findBeersWithinBoth('color', 'bitterness')); // should return 1
-//     console.log('color + abv: ' + database.findBeersWithinBoth('color', 'abv')); // should return 0
-//     console.log('abv + bitterness: ' + database.findBeersWithinBoth('abv', 'bitterness')); // should return empty array
-
-//     console.log('color + abv + bitterness: ' + database.findBeersWithAll());
-// }
-// test();
