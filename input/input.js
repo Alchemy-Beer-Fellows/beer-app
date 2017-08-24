@@ -160,11 +160,11 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('German Leichtbier', '1', '2', '2', '15');
     new Beer('Kolsch', '1', '3', '2', '16');
     new Beer('German Exportbier', '2', '3', '2', '17');
-    new Beer('Gerna Pils', '1', '3', '2', '18');
+    new Beer('German Pils', '1', '3', '2', '18');
     new Beer('Marzen', '3', '4', '2', '19');
     new Beer('Rauchbier', '3', '2', '3', '20');
     new Beer('DunkelsBock', '4', '4', '2', '21');
-    new Beer(' Vienna Lager', '3', '3', '2', '22');
+    new Beer('Vienna Lager', '3', '3', '2', '22');
     new Beer('Altbier', '3', '3', '2', '23');
     new Beer('Munich Dunkel', '4', '3', '2', '24');
     new Beer('Schwarzbier', '5', '3', '2', '25');
@@ -208,7 +208,7 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Double IPA', '3', '5', '5', '63');
     new Beer('American Strong Ale', '3', '5', '4', '64');
     new Beer('American Barleywine', '3', '5', '4', '65');
-    new Beer('Weatwine', '3', '5', '3', '66');
+    new Beer('Wheatwine', '3', '5', '3', '66');
     new Beer('Berliner Weisse', '1', '2', '1', '67');
     new Beer('Flanders Red Ale', '3', '3', '1', '68');
     new Beer('Oud Bruin', '4', '4', '2', '69');
@@ -219,7 +219,7 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Belgian Pale Ale', '2', '3', '2', '74');
     new Beer('Biere de Garde', '3', '4', '2', '75');
     new Beer('Belgian Blond Ale', '2', '4', '2', '76');
-    new Beer('Saisan (Standard)', '3', '4', '2', '77');
+    new Beer('Saison', '3', '4', '2', '77');
     new Beer('Belgian Golden Strong Ale', '2', '5', '2', '78');
     new Beer('Belgian Single', '1', '3', '2', '79');
     new Beer('Belgian Dubbel', '1', '4', '2', '80');
