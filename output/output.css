@@ -207,6 +207,12 @@ ul{
     justify-content: space-around;
 }
 
+.previous-beer-preferences {
+    font-family: 'Sigmar One', cursive;
+    font-size: 0.8em;
+
+}
+
 .previous-beer-lists {
     margin-bottom: 2em;
 }
