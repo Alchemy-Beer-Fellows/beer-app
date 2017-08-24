@@ -138,10 +138,11 @@ nav img {
 #about{
     border: 10px double black;
     position: absolute;
-    bottom: -531px;
+    bottom: -578px;
     left: 7%;
     width: 85%;
     min-width: 51em;
+    margin-bottom: 2em;
 }
 
 ul{
