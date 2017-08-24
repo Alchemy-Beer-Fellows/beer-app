@@ -1,7 +1,6 @@
 var user = {
     name: '',
 
-
     currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
         name: '',
         color: ['minC', 'maxC'],
@@ -290,7 +289,7 @@ var database = {
     fillInChoice: function (i, beer){
         var elChoice = document.getElementById('choice' + i);
         elChoice.innerHTML = '';
-        elChoice.setAttribute( 'id', 'choice' + i )
+        elChoice.setAttribute( 'id', 'choice' + i );
         var elH5 = document.createElement('h5');
         elH5.innerText = beer.style;
         elChoice.appendChild(elH5);
@@ -384,7 +383,7 @@ var database = {
         for(var i = 0; i < twoPropExclusive.length; i++) {
             var elBeer = document.createElement('div');
                 elBeer.setAttribute('class', 'alt-beer');
-                var index = parseInt(twoPropExclusive[i])
+                var index = parseInt(twoPropExclusive[i]);
 
                 var elH5 = document.createElement('h5');
                 elH5.innerText = beers[index].style;
