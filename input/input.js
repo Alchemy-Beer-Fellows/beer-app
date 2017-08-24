@@ -53,7 +53,6 @@ var user = {
         this.mergePreferences();
         this.preferencesToLS();
 
-
         if (elForm.minC.value > elForm.maxC.value) {
             alert('Invalid range: min must be less than max.');
             return false;
@@ -69,41 +68,40 @@ var user = {
     },
 
     manageInputRanges: function(e, elForm) {
-        if(RegExp(/^(min|max)[ABC]/).test(e.target.id)){
+        if (RegExp(/^(min|max)[ABC]/).test(e.target.id)) {
             var minORmax = '',
                 CAB = '',
                 valueRange = [];
 
             CAB = e.target.id.charAt(3);
-            if(RegExp(/^min/).test(e.target.id)) {
+            if (RegExp(/^min/).test(e.target.id)) {
                 minORmax = 'max';
                 var minValue = e.target.id.charAt(4);
-                for(var i = 1; i < minValue; i++) {
+                for (var i = 1; i < minValue; i++) {
                     valueRange.push(i);
                 }
-                if(!(elForm[minORmax + CAB].value >= minValue &&
-                     elForm[minORmax + CAB].value <= 5)) {
+                if (!(elForm[minORmax + CAB].value >= minValue &&
+                        elForm[minORmax + CAB].value <= 5)) {
                     elForm[minORmax + CAB].value = minValue;
                 }
-            }
-            else if(RegExp(/^max/).test(e.target.id)) {
+            } else if (RegExp(/^max/).test(e.target.id)) {
                 minORmax = 'min';
                 var maxValue = e.target.id.charAt(4);
-                for(var i = (parseInt(maxValue) + 1); i <= 5; i++) {
+                for (var i = (parseInt(maxValue) + 1); i <= 5; i++) {
                     valueRange.push(i);
                 }
-                if(!(elForm[minORmax + CAB].value >= 1 &&
-                     elForm[minORmax + CAB].value <= maxValue)) {
+                if (!(elForm[minORmax + CAB].value >= 1 &&
+                        elForm[minORmax + CAB].value <= maxValue)) {
                     elForm[minORmax + CAB].value = maxValue;
                 }
             }
-            console.log(minORmax+CAB+valueRange);
-            for(var i = 1; i <= 5; i++) {
+            console.log(minORmax + CAB + valueRange);
+            for (var i = 1; i <= 5; i++) {
                 var elButton = document.getElementById(minORmax + CAB + i);
                 elButton.disabled = false;
             }
 
-            for(var i = 0; i < valueRange.length; i++) {
+            for (var i = 0; i < valueRange.length; i++) {
                 var elButton = document.getElementById(minORmax + CAB + valueRange[i]);
                 elButton.disabled = true;
                 console.log(elButton);
@@ -315,7 +313,9 @@ function onRunInput() {
     }
     if (user.previousPreferences) {
         for (var i = 0; i <= user.previousPreferences.length - 1; i++) {
-            if (user.previousPreferences[i].name === user.name) {
+            if (user.previousPreferences[i].name !== 'Guest') {
+                break;
+            } else if (user.previousPreferences[i].name === user.name) {
                 var returnPreferences = user.previousPreferences[i];
                 var minColorValue = returnPreferences.color[0];
                 var maxColorValue = returnPreferences.color[1];
@@ -337,7 +337,6 @@ function onRunInput() {
                 maxBitternessEle.setAttribute('checked', 'checked');
                 break;
             }
-
         }
     }
 }

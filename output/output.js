@@ -37,7 +37,6 @@ var user = {
             this.previousPreferences = [];
             return [];
         }
-        
     },
 
     getCurrentPreference: function() {

@@ -34,6 +34,9 @@ sampleButton.addEventListener('click', function() {
     event.preventDefault();
     if (event.target.id === 'sample') {
         nameStorage = 'Guest';
+        names = getLS();
+        names.push(nameStorage);
+        toLs();
         window.location = './input/input.html';
     }
 });
