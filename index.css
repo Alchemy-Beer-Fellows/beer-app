@@ -97,7 +97,7 @@ nav img {
 
  
 #main{
-    /* border: 2px solid black; */
+      /* border: 2px solid black;   */
    display: block;
    margin: 0 auto;
    text-align: center;
@@ -142,9 +142,10 @@ nav img {
     left: 7%;
     width: 85%;
     min-width: 51em;
-    margin: 3em auto;
-    padding: 10px;
+}
 
+ul{
+  list-style: none;
 }
 
 #right{
