@@ -289,7 +289,9 @@ var database = {
     fillInChoice: function (i, beer){
         var elChoice = document.getElementById('choice' + i);
         elChoice.innerHTML = '';
-        elChoice.setAttribute( 'id', 'choice' + i );
+
+        elChoice.setAttribute( 'id', 'choice' + i);
+
         var elH5 = document.createElement('h5');
         elH5.innerText = beer.style;
         elChoice.appendChild(elH5);
@@ -339,9 +341,11 @@ var database = {
             event.preventDefault();
         }
 
-        user.switchToCurrentUser();
-
         if(this.goodAll.length > 0) {
+
+            user.switchToCurrentUser();
+        database.compilePreferredBeers();
+
             var threeBeers = this.getChoices();
             for (var i = 0; i < threeBeers.length; i++){
                 this.fillInChoice(3 - ((i + 1) % 3), threeBeers[i]);
