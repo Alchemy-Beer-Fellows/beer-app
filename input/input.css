@@ -26,98 +26,6 @@
    font-family: 'Sigmar One', cursive;
  }
 
-
- /* Color Radio.................................................................................. */
-
- #abvMin,
- #abvMax,
- #bitterMin,
- #bitterMax {
-   position: relative;
-   width: 100%;
-   padding: 0rem 4rem 3rem 1rem;
-   font-family: verdana;
- }
-
- #abvMin:before,
- #abvMax:before,
- #bitterMin:before,
- #bitterMax:before {
-   content: '  ';
-   position: absolute;
-   left: 0;
-   z-index: -1;
-   width: 100%;
-   height: 3rem;
-   border-radius: 30px;
- }
-
- .switch__label {
-   display: inline-block;
-   /* width: 2rem; */
-   padding: 1rem;
-   text-align: center;
-   cursor: pointer;
-   transition: color 200ms ease-out;
- }
-
- .switch__label:hover {
-   color: white;
- }
-
- .switch__indicator {
-   width: 3rem;
-   height: 3rem;
-   position: absolute;
-   /* background: #FFE144; */
-   top: 4rem;
-   left: 0;
-   border-radius: 50%;
-   transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), background 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
-   transform: translate3d(1rem, 0, 0);
- }
-
-
- #abvMin input#minA1:checked~.switch__indicator,
- #abvMax input#maxA1:checked~.switch__indicator,
- #bitterMin input#minB1:checked~.switch__indicator,
- #bitterMax input#maxB1:checked~.switch__indicator {
-   background: #E3E2E5;
-   transform: translate3d(26.5rem, 0, 0);
- }
-
-
- #abvMin input#minA2:checked~.switch__indicator,
- #abvMax input#maxA2:checked~.switch__indicator {
-   background: #ACABAD;
-   transform: translate3d(34rem, 0, 0);
- }
-
- #abvMin input#minA3:checked~.switch__indicator,
- #abvMax input#maxA3:checked~.switch__indicator {
-   background: #727173;
-   transform: translate3d(41rem, 0, 0);
- }
-
- #abvMin input#minA4:checked~.switch__indicator,
- #abvMax input#maxA4:checked~.switch__indicator {
-   background: #3A3A3B;
-   transform: translate3d(48.5rem, 0, 0);
- }
-
-
- #abvMin input#minA5:checked~.switch__indicator,
- #abvMax input#maxA5:checked~.switch__indicator {
-   background: black;
-   transform: translate3d(55.5rem, 0, 0);
- }
-
- #abvMin input[type="radio"]:not(:checked),
- #abvMin input[type="radio"]:checked,
- #abvMax input[type="radio"]:not(:checked),
- #abvMax input[type="radio"]:checked {
-   display: none;
- }
 /* beer images........................................................ */
 
  input[type="radio"]{
@@ -185,6 +93,65 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+/* ABV images.......................................................... */
+#minA1[type="radio"] + label,
+#maxA1[type="radio"] + label
+{
+   background-image:url(../assets/abv1.jpg);
+   background-size: cover;
+   height: 100px;
+   width: 100px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+#minA2[type="radio"] + label,
+#maxA2[type="radio"] + label
+{
+   background-image:url(../assets/abv2.jpg);
+   background-size: cover;
+   height: 100px;
+   width: 100px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+#minA3[type="radio"] + label,
+#maxA3[type="radio"] + label
+{
+   background-image:url(../assets/abv3.jpg);
+   background-size: cover;
+
+   height: 100px;
+   width: 100px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+
+#minA4[type="radio"] + label,
+#maxA4[type="radio"] + label
+{
+   background-image:url(../assets/abv4.jpg);
+   background-size: cover;
+   height: 100px;
+   width: 100px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+#minA5[type="radio"] + label,
+#maxA5[type="radio"] + label
+{
+   background-image:url(../assets/abv5.jpg);
+   background-size: cover;
+   height: 100px;
+   width: 100px;
+   display:inline-block;
+   padding: 0 0 0 0px;
+   cursor:pointer;
+}
+
 /* Bitter images.................................................. */
 #minB1[type="radio"] + label,
 #maxB1[type="radio"] + label
@@ -267,7 +234,17 @@
 #maxB2[type="radio"]:checked + label,
 #maxB3[type="radio"]:checked + label,
 #maxB4[type="radio"]:checked + label,
-#maxB5[type="radio"]:checked + label
+#maxB5[type="radio"]:checked + label,
+#minA1[type="radio"]:checked + label,
+#minA2[type="radio"]:checked + label,
+#minA3[type="radio"]:checked + label,
+#minA4[type="radio"]:checked + label,
+#minA5[type="radio"]:checked + label,
+#maxA1[type="radio"]:checked + label,
+#maxA2[type="radio"]:checked + label,
+#maxA3[type="radio"]:checked + label,
+#maxA4[type="radio"]:checked + label,
+#maxA5[type="radio"]:checked + label
 {
    border: 3px solid black;
 }
