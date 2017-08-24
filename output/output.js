@@ -315,11 +315,18 @@ var database = {
 
     getChoices: function (){
         var threeBeers = [];
-        for (var i = 0; i < 3; i ++){
+        var displayNum = 3;
+        if(this.goodAll.length < 3) {
+            displayNum = this.goodAll.length;
+        }
+        for (var i = 0; i < displayNum; i ++){
             var randomPick = Math.floor(Math.random() * (this.goodAll.length));
             var randomIndex = this.goodAll[randomPick];
-            threeBeers[i] = beers[randomIndex];
-
+            console.log(randomIndex);
+            if(!(threeBeers.includes(beers[randomIndex]))) {
+                threeBeers[i] = beers[randomIndex];
+                i--;
+            }
         }
         return threeBeers;
     },
@@ -331,8 +338,9 @@ var database = {
 
         if(this.goodAll.length > 0) {
             var threeBeers = this.getChoices();
-            for (var i = 1; i <= 3; i ++){
-                this.fillInChoice(i, threeBeers[i - 1]);
+            console.log(threeBeers);
+            for (var i = 0; i < threeBeers.length; i++){
+                this.fillInChoice(3 - ((i + 1) % 3), threeBeers[i]);
             }
         }
         else {
@@ -403,6 +411,16 @@ var database = {
 
         var elSubContainer = document.createElement('div');
         elSubContainer.setAttribute('class', 'sub-container');
+
+        var PrefDiv = document.getElementById('div');
+        var elPrevHead = document.createElement('h6');
+            elPrevHead.setAttribute('class', 'container');
+            elPrevHead.innerText = ( 'Preference ' + (user.thisUserPrevPrefs.length - index) );
+            console.log('Preference ' + 'previous-beer-preferences.length' - index );
+            elSubContainer.appendChild(elPrevHead);
+
+
+
             var elPreferencesDiv = document.createElement('div');
             elPreferencesDiv.setAttribute('class', 'previous-beer-preferences');
                 var elPColor = document.createElement('p');
