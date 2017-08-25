@@ -1,6 +1,6 @@
 var user = {
     name: '',
-    currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
+    currentPreferences: {
 
         name: '',
         color: ['minC', 'maxC'],
@@ -10,13 +10,11 @@ var user = {
     },
 
     allNames: [],
-    previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
-
-    /*local storage methods*/
+    previousPreferences: [],
 
     elForm: document.getElementById('getPreferences'),
 
-    getPreviousNames: function() {
+    getPreviousNames: function () {
         if (localStorage.getItem('name')) {
             this.allNames = JSON.parse(localStorage.getItem('name'));
             this.name = this.allNames.slice(-1)[0];
@@ -24,7 +22,7 @@ var user = {
         }
     },
 
-    getPreviousPreferences: function() {
+    getPreviousPreferences: function () {
         if (localStorage.getItem('preferences')) {
             this.previousPreferences = (JSON.parse(localStorage.getItem('preferences')));
             return JSON.parse(localStorage.getItem('preferences'));
@@ -35,15 +33,15 @@ var user = {
 
     },
 
-    mergePreferences: function() {
+    mergePreferences: function () {
         this.previousPreferences.push(this.currentPreferences);
     },
-    preferencesToLS: function() {
+    preferencesToLS: function () {
         var str = JSON.stringify(this.previousPreferences);
         localStorage.setItem('preferences', str);
     },
 
-    prefHandler: function(e, elForm) {
+    prefHandler: function (e, elForm) {
         user.currentPreferences.color[0] = elForm.minC.value;
         user.currentPreferences.color[1] = elForm.maxC.value;
         user.currentPreferences.abv[0] = elForm.minA.value;
@@ -67,7 +65,7 @@ var user = {
         }
     },
 
-    manageInputRanges: function(e, elForm) {
+    manageInputRanges: function (e, elForm) {
         if (RegExp(/^(min|max)[ABC]/).test(e.target.id)) {
             var minORmax = '',
                 CAB = '',
@@ -81,7 +79,7 @@ var user = {
                     valueRange.push(i);
                 }
                 if (!(elForm[minORmax + CAB].value >= minValue &&
-                        elForm[minORmax + CAB].value <= 5)) {
+                    elForm[minORmax + CAB].value <= 5)) {
                     elForm[minORmax + CAB].value = minValue;
                 }
             } else if (RegExp(/^max/).test(e.target.id)) {
@@ -91,7 +89,7 @@ var user = {
                     valueRange.push(i);
                 }
                 if (!(elForm[minORmax + CAB].value >= 1 &&
-                        elForm[minORmax + CAB].value <= maxValue)) {
+                    elForm[minORmax + CAB].value <= maxValue)) {
                     elForm[minORmax + CAB].value = maxValue;
                 }
             }
@@ -110,39 +108,34 @@ var user = {
     }
 };
 
-user.elForm.addEventListener('click', function(e) {
+user.elForm.addEventListener('click', function (e) {
     user.manageInputRanges(e, this);
 });
-user.elForm.addEventListener('submit', function(e) {
+user.elForm.addEventListener('submit', function (e) {
     e.preventDefault();
     user.prefHandler(e, this);
 }, true);
 
-var beers = []; // array for beer objects
-function Beer(style, color, abv, bitter, idNum) { // beer object constructor
-    this.style = style; // string name eg 'IPL'
+var beers = [];
+function Beer(style, color, abv, bitter, idNum) {
+    this.style = style;
     this.idNum = idNum;
-    this.color = color; // 2 element array with [min, max] values
-    this.abv = abv; // 2 element array with [min, max] values
-    this.bitterness = bitter; // 2 element array with [min, max] values
-    // this.example = examples;
+    this.color = color; 
+    this.abv = abv;
+    this.bitterness = bitter;
 
     beers.push(this);
 }
 
-Beer.prototype.isInRange = function(parameter, min, max) { // parameter(string), min & max(numbers)
-    // is there a way to make this outside of the constuctor? 
-    if (min <= this[parameter] && this[parameter] <= max) { // if the beer's value for the given property is 
-        return true; // between the desired min and max values,
-    } // return true, otherwise return false.
+Beer.prototype.isInRange = function (parameter, min, max) { 
+    if (min <= this[parameter] && this[parameter] <= max) { 
+        return true;
+    }
     return false;
 };
 
-function compileBeers() { // use Beer constructor to put beers and their properties into beer array
-    // for(var i = 0; i < styles.length; i++) { // repeat for all styles
-    //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
-    // }
-    //         name              color  abv  bitt  ID
+function compileBeers() {
+    
     new Beer('Lite American Lager', '1', '2', '1', '1');
     new Beer('American Lager', ' 1', '3', '1', '2');
     new Beer('Cream Ale', '1', '3', '1', '3');
@@ -227,16 +220,15 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Belgian Dark Strong Ale', '4', '5', '2', '82');
 };
 
-/*main object literal, holding beer object array, methods to sort, and methods to push to local storage*/
 var database = {
     color_abv: [],
     color_bitterness: [],
     abv_bitterness: [],
     goodAll: [],
 
-    findBeersWithin: function(parameter, min, max) { // finds all beers within the given parameters and returns their (styles or ids?) in an array
-        var goodBeers = []; // I'm thinking the array should hold idNum or style for better processing
-        for (var i = 0; i < beers.length; i++) { // When the final beers are 
+    findBeersWithin: function (parameter, min, max) { 
+        var goodBeers = [];
+        for (var i = 0; i < beers.length; i++) {
             if (beers[i].isInRange(parameter, min, max)) {
                 goodBeers.push(beers[i].idNum);
             }
@@ -244,7 +236,7 @@ var database = {
         return goodBeers;
     },
 
-    findBeersWithinBoth: function(parameterA, parameterB) { // finds all beers that share two parameters and returns an array holding each beer object (or id num?)
+    findBeersWithinBoth: function (parameterA, parameterB) {
         var goodBeersA,
             goodBeersB,
             goodBeersAB = [],
@@ -278,7 +270,7 @@ var database = {
         return goodBeersAB;
     },
 
-    findBeersWithAll: function() {
+    findBeersWithAll: function () {
         var bestBeers = [];
         for (var i = 0; i < this.color_abv.length; i++) {
             for (var j = 0; j < this.color_bitterness.length; j++) {
