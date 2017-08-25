@@ -1,11 +1,7 @@
 var user = {
     name: '',
-
-<<<<<<< HEAD
-    currentPreferences: {
-=======
+    
     currentPreferences: { 
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
         name: '',
         color: ['minC', 'maxC'],
         abv: ['minA', 'maxA'],
@@ -14,18 +10,12 @@ var user = {
 
     allNames: [],
     thisUserPrevPrefs: [],
-<<<<<<< HEAD
-    previousPreferences: [],
-
-    getPreviousNames: function () {
-        if (localStorage.getItem('name')) {
-=======
 
     previousPreferences: [], 
   
     getPreviousNames: function() {
         if(localStorage.getItem('name')) {
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
+
             this.allNames = JSON.parse(localStorage.getItem('name'));
             this.name = this.allNames.slice(-1)[0];
             this.currentPreferences.name = this.name;
@@ -74,17 +64,10 @@ var user = {
 
     },
 
-<<<<<<< HEAD
-    findUsersPreviousPreferences: function () { // fills thisUsersPrevPrefs starting from most recent
-        if (user.name) {
-            for (var i = this.previousPreferences.length - 2; i >= 0; i--) {
-                if (this.previousPreferences[i]['name'] === user.name) {
-=======
     findUsersPreviousPreferences: function() {
         if(user.name) {
             for(var i = this.previousPreferences.length - 2; i >= 0; i--){
                 if(this.previousPreferences[i]['name'] === user.name){
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
                     this.thisUserPrevPrefs.push(this.previousPreferences[i]);
                 }
             }
@@ -105,15 +88,6 @@ var user = {
 };
 
 var beers = [];
-<<<<<<< HEAD
-=======
-function Beer(style, color, abv, bitter, idNum) {
-    this.style = style;
-    this.idNum = idNum;
-    this.color = color; 
-    this.abv = abv; 
-    this.bitterness = bitter;
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
 
 function Beer(style, color, abv, bitter, idNum) {
     this.style = style;
@@ -124,23 +98,15 @@ function Beer(style, color, abv, bitter, idNum) {
     beers.push(this);
 }
 
-<<<<<<< HEAD
-Beer.prototype.isInRange = function (parameter, min, max) {
-    if (min <= this[parameter] && this[parameter] <= max) {
-=======
 Beer.prototype.isInRange = function(parameter, min, max) {
     if (min <= this[parameter] && this[parameter] <= max) { 
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
         return true;
     }
     return false;
 };
 
 function compileBeers() {
-<<<<<<< HEAD
-=======
     
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
     new Beer('Belgian Dark Strong Ale', '4', '5', '2', '0');
     new Beer('Lite American Lager', '1', '2', '1', '1');
     new Beer('American Lager', ' 1', '3', '1', '2');
@@ -233,17 +199,9 @@ var database = {
 
     elNewBeers: document.getElementById('button'),
 
-<<<<<<< HEAD
-
-
-    findBeersWithin: function (parameter, min, max) {
-        var goodBeers = [];
-        for (var i = 0; i < beers.length; i++) {
-=======
     findBeersWithin: function(parameter, min, max) {
         var goodBeers = [];
         for (var i = 0; i < beers.length; i++) { 
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
             if (beers[i].isInRange(parameter, min, max)) {
                 goodBeers.push(beers[i].idNum);
             }
@@ -251,11 +209,7 @@ var database = {
         return goodBeers;
     },
 
-<<<<<<< HEAD
-    findBeersWithinBoth: function (parameterA, parameterB) {
-=======
     findBeersWithinBoth: function(parameterA, parameterB) {
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
         var goodBeersA,
             goodBeersB,
             goodBeersAB = [],
@@ -456,21 +410,11 @@ var database = {
         elPrevHead.innerText = ('Preference ' + (user.thisUserPrevPrefs.length - index));
         elSubContainer.appendChild(elPrevHead);
 
-<<<<<<< HEAD
-
-
-        var elPreferencesDiv = document.createElement('div');
-        elPreferencesDiv.setAttribute('class', 'previous-beer-preferences');
-        var elPColor = document.createElement('p');
-        elPColor.innerText = "Color:  " + user.thisUserPrevPrefs[index].color[0] + ' - ' + user.thisUserPrevPrefs[index].color[1];
-        elPreferencesDiv.appendChild(elPColor);
-=======
             var elPreferencesDiv = document.createElement('div');
             elPreferencesDiv.setAttribute('class', 'previous-beer-preferences');
                 var elPColor = document.createElement('p');
                 elPColor.innerText = "Color:  " + user.thisUserPrevPrefs[index].color[0] + ' - ' + user.thisUserPrevPrefs[index].color[1];
                 elPreferencesDiv.appendChild(elPColor);
->>>>>>> 5487f30786ce0974c7277dee423083100fa0f647
 
         var elPAbv = document.createElement('p');
         elPAbv.innerText = "ABV:  " + user.thisUserPrevPrefs[index].abv[0] + ' - ' + user.thisUserPrevPrefs[index].abv[1];
