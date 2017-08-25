@@ -13,7 +13,7 @@
 }
 
 html {
-    min-width: 54em;
+    min-width: 61em;
 }
 
 body{
@@ -97,14 +97,12 @@ nav img {
 
  
 #main{
-      /* border: 2px solid black;   */
-   display: block;
-   margin: 0 auto;
-   text-align: center;
-   padding: 5%;
-   font-size: 15pt;
-   float: right;
-   margin: 10%;
+    display: inline-block;
+    text-align: center;
+    padding: 5%;
+    font-size: 15pt;
+    margin-left: 50%;
+    min-width: 21em;
 
 }
 
