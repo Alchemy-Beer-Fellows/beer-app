@@ -90,7 +90,7 @@ ul {
     align-content: center;
 }
 
-#mainBeer div {
+#mainBeer div{
     width: 30%;
     height: 85%;
     font-size: 20pt;
@@ -117,8 +117,8 @@ ul {
     height: 30px;
     margin-top: 24%;
 }
-
-#button {
+ 
+#button{
     font-family: 'Baloo Bhaijaan', cursive;
     width: 28em;
     min-width: 14em;
@@ -136,7 +136,7 @@ ul {
     font-size: 20pt;
 }
 
-#bottomBeer {
+#bottomBeer{
     width: 80%;
     min-width: 22em;
     height: 50%;
