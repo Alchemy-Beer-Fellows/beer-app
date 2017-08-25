@@ -1,7 +1,7 @@
 var user = {
     name: '',
 
-    currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
+    currentPreferences: { 
         name: '',
         color: ['minC', 'maxC'],
         abv: ['minA', 'maxA'],
@@ -10,16 +10,8 @@ var user = {
 
     allNames: [],
     thisUserPrevPrefs: [],
-    previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
-
-    /*local storage methods*/
-    // submit: document.getElementById(),
-
-    // prefHandler: function() {
-    //     user.currentPreferences
-    //     preferencesToLS('beer', this.currentPreferences);
-    // },
-
+    previousPreferences: [], 
+    
     getPreviousNames: function() {
         if(localStorage.getItem('name')) {
             this.allNames = JSON.parse(localStorage.getItem('name'));
