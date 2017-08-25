@@ -1,5 +1,4 @@
- html,
- body {
+html,body {
    text-align: center;
     margin: 0; 
    padding: 45px;
@@ -7,34 +6,31 @@
      height: 78em;  
    background: #82D5F0;
    border: 12px double black; 
- }
- legend{
+}
+
+legend{
    margin: 0 auto;
    font-family: 'Sigmar One', cursive;
    font-size: 15pt;
- }
+}
 
-  h1 {
+h1 {
    font-family: 'Sigmar One', cursive;
    font-size: 40pt;
    text-align: center;
    margin-bottom: 2em;
- }
+}
 
- #greeting h1{
+#greeting h1{
   font-family: 'Sigmar One', cursive; 
- }
+}
 
-
-
-
- input[type="radio"]{
+input[type="radio"]{
   display:none;
 }
 
 #minC1[type="radio"] + label,
-#maxC1[type="radio"] + label
-{
+#maxC1[type="radio"] + label{
    background-image:url(../assets/beer1.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -44,9 +40,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minC2[type="radio"] + label,
-#maxC2[type="radio"] + label
-{
+#maxC2[type="radio"] + label{
    background-image:url(../assets/beer2.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -56,9 +52,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+  
 #minC3[type="radio"] + label,
-#maxC3[type="radio"] + label
-{
+#maxC3[type="radio"] + label{
    background-image:url(../assets/beer3.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -70,8 +66,7 @@
 }
 
 #minC4[type="radio"] + label,
-#maxC4[type="radio"] + label
-{
+#maxC4[type="radio"] + label{
    background-image:url(../assets/beer4.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -81,9 +76,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minC5[type="radio"] + label,
-#maxC5[type="radio"] + label
-{
+#maxC5[type="radio"] + label{
    background-image:url(../assets/beer5a.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -93,10 +88,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
-/* ABV images.......................................................... */
+
 #minA1[type="radio"] + label,
-#maxA1[type="radio"] + label
-{
+#maxA1[type="radio"] + label{
    background-image:url(../assets/abv1.jpg);
    background-size: cover;
    height: 100px;
@@ -105,9 +99,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minA2[type="radio"] + label,
-#maxA2[type="radio"] + label
-{
+#maxA2[type="radio"] + label{
    background-image:url(../assets/abv2.jpg);
    background-size: cover;
    height: 100px;
@@ -116,12 +110,11 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minA3[type="radio"] + label,
-#maxA3[type="radio"] + label
-{
+#maxA3[type="radio"] + label{
    background-image:url(../assets/abv3.jpg);
    background-size: cover;
-
    height: 100px;
    width: 100px;
    display:inline-block;
@@ -130,8 +123,7 @@
 }
 
 #minA4[type="radio"] + label,
-#maxA4[type="radio"] + label
-{
+#maxA4[type="radio"] + label{
    background-image:url(../assets/abv4.jpg);
    background-size: cover;
    height: 100px;
@@ -140,9 +132,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minA5[type="radio"] + label,
-#maxA5[type="radio"] + label
-{
+#maxA5[type="radio"] + label{
    background-image:url(../assets/abv5.jpg);
    background-size: cover;
    height: 100px;
@@ -152,10 +144,8 @@
    cursor:pointer;
 }
 
-/* Bitter images.................................................. */
 #minB1[type="radio"] + label,
-#maxB1[type="radio"] + label
-{
+#maxB1[type="radio"] + label{
    background-image:url(../assets/hop1.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -165,9 +155,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minB2[type="radio"] + label,
-#maxB2[type="radio"] + label
-{
+#maxB2[type="radio"] + label{
    background-image:url(../assets/hop2.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -177,9 +167,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minB3[type="radio"] + label,
-#maxB3[type="radio"] + label
-{
+#maxB3[type="radio"] + label{
    background-image:url(../assets/hop3.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -191,8 +181,7 @@
 }
 
 #minB4[type="radio"] + label,
-#maxB4[type="radio"] + label
-{
+#maxB4[type="radio"] + label{
    background-image:url(../assets/hop4.jpg);
    background-size: cover;
    border-radius: 100%;
@@ -202,9 +191,9 @@
    padding: 0 0 0 0px;
    cursor:pointer;
 }
+
 #minB5[type="radio"] + label,
-#maxB5[type="radio"] + label
-{
+#maxB5[type="radio"] + label{
    background-image:url(../assets/hop5.jpg);
    background-size: cover;
    border-radius: 100%;

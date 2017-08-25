@@ -61,7 +61,6 @@ img{
  #freeTrial{
     display: inline-block;
     border: 2px solid black;
-    /* margin: 15px; */
     background-color:#C4C4C4;
     padding: 3px;
     text-decoration: none;
@@ -95,29 +94,16 @@ nav img {
     height: auto;
 }
 
- 
 #main{
-    display: inline-block;
-    text-align: center;
-    padding: 5%;
-    font-size: 15pt;
-    margin-left: 50%;
-    min-width: 21em;
-
+   display: block;
+   margin: 0 auto;
+   text-align: center;
+   padding: 5%;
+   font-size: 15pt;
+   float: right;
+   margin: 10%;
 }
 
-/* #getName{
-   font-size: 30pt;
-   padding: 3%;
-} */
-
-/* #right{
-    float: right;
-}
-
-#right1{
-    float: right;
-} */
 #sign-in-button{
     width: 150px;
     height: 30px;
