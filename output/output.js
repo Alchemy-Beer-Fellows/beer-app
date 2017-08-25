@@ -1,7 +1,8 @@
 var user = {
     name: '',
 
-    currentPreferences: {
+    currentPreferences: { 
+        name: '',
         color: ['minC', 'maxC'],
         abv: ['minA', 'maxA'],
         bitterness: ['minB', 'maxB']
@@ -9,8 +10,9 @@ var user = {
 
     allNames: [],
     thisUserPrevPrefs: [],
-    previousPreferences: [],
 
+    previousPreferences: [], 
+  
     getPreviousNames: function() {
         if(localStorage.getItem('name')) {
             this.allNames = JSON.parse(localStorage.getItem('name'));
