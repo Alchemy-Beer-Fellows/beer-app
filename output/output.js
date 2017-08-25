@@ -439,15 +439,15 @@ var database = {
             var elPreferencesDiv = document.createElement('div');
             elPreferencesDiv.setAttribute('class', 'previous-beer-preferences');
                 var elPColor = document.createElement('p');
-                elPColor.innerText = "Color:  " + user.thisUserPrevPrefs[index].color[0] + ' / ' + user.thisUserPrevPrefs[index].color[1];
+                elPColor.innerText = "Color:  " + user.thisUserPrevPrefs[index].color[0] + ' - ' + user.thisUserPrevPrefs[index].color[1];
                 elPreferencesDiv.appendChild(elPColor);
 
                 var elPAbv = document.createElement('p');
-                elPAbv.innerText = "ABV:  " + user.thisUserPrevPrefs[index].abv[0] + ' / ' + user.thisUserPrevPrefs[index].abv[1];
+                elPAbv.innerText = "ABV:  " + user.thisUserPrevPrefs[index].abv[0] + ' - ' + user.thisUserPrevPrefs[index].abv[1];
                 elPreferencesDiv.appendChild(elPAbv);
 
                 var elPBitter = document.createElement('p');
-                elPBitter.innerText = "Bitterness:  " + user.thisUserPrevPrefs[index].bitterness[0] + ' / ' + user.thisUserPrevPrefs[index].bitterness[1];
+                elPBitter.innerText = "Bitterness:  " + user.thisUserPrevPrefs[index].bitterness[0] + ' - ' + user.thisUserPrevPrefs[index].bitterness[1];
                 elPreferencesDiv.appendChild(elPBitter);
             elSubContainer.appendChild(elPreferencesDiv);
 
