@@ -280,7 +280,11 @@ h4{
     margin-bottom: 2em;
     text-align: center;
     position: absolute;
-    right: 63px;
+    right: 250px;
+}
+
+#home-button {
+    right: 88px;
 }
 
 a{

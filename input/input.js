@@ -93,7 +93,6 @@ var user = {
                     elForm[minORmax + CAB].value = maxValue;
                 }
             }
-            console.log(minORmax + CAB + valueRange);
             for (var i = 1; i <= 5; i++) {
                 var elButton = document.getElementById(minORmax + CAB + i);
                 elButton.disabled = false;
@@ -102,7 +101,6 @@ var user = {
             for (var i = 0; i < valueRange.length; i++) {
                 var elButton = document.getElementById(minORmax + CAB + valueRange[i]);
                 elButton.disabled = true;
-                console.log(elButton);
             }
         }
     }
