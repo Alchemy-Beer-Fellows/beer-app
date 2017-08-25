@@ -91,13 +91,7 @@ ul{
     display: flex;
     justify-content: space-between;
     align-content: center;
-    /* text-align: center; */
-
 }
-
-/* #mainBeer img{
-    height:;
-} */
 
 #mainBeer div{
     width: 30%;
@@ -128,15 +122,11 @@ ul{
 
 }
  
-
-
 #button{
     font-family: 'Baloo Bhaijaan', cursive;
-    /* background-color:#E5DAD8; */
     width: 28em;
     min-width: 14em;
     height: 62px;
-    /* border: solid black 1px; */
     margin: auto;
     padding: 0.2em;
     text-align: center;
@@ -149,7 +139,6 @@ ul{
 #button button {
     font-size: 20pt;
 }
-
 
 #bottomBeer{
     width: 80%;
@@ -181,7 +170,6 @@ ul{
     border-bottom: 2px solid black;
 }
 
-
 .alt-beer {
     display: initial;
     width: 100%;
@@ -210,7 +198,6 @@ ul{
 .previous-beer-preferences {
     font-family: 'Sigmar One', cursive;
     font-size: 0.8em;
-
 }
 
 .previous-beer-lists {

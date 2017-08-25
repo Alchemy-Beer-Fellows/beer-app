@@ -1,8 +1,7 @@
 var user = {
     name: '',
 
-    currentPreferences: { // would allow us to call using user.currentPreferences['color'][0-1] (see database.findBeersWithBoth() method)
-        name: '',
+    currentPreferences: {
         color: ['minC', 'maxC'],
         abv: ['minA', 'maxA'],
         bitterness: ['minB', 'maxB']
@@ -10,15 +9,7 @@ var user = {
 
     allNames: [],
     thisUserPrevPrefs: [],
-    previousPreferences: [], // could just hold all the previous preferences; current prefs are push on after each session
-
-    /*local storage methods*/
-    // submit: document.getElementById(),
-
-    // prefHandler: function() {
-    //     user.currentPreferences
-    //     preferencesToLS('beer', this.currentPreferences);
-    // },
+    previousPreferences: [],
 
     getPreviousNames: function() {
         if(localStorage.getItem('name')) {
@@ -70,7 +61,7 @@ var user = {
 
     },
 
-    findUsersPreviousPreferences: function() { // fills thisUsersPrevPrefs starting from most recent
+    findUsersPreviousPreferences: function() {
         if(user.name) {
             for(var i = this.previousPreferences.length - 2; i >= 0; i--){
                 if(this.previousPreferences[i]['name'] === user.name){
@@ -92,35 +83,27 @@ var user = {
         }
     },
 };
-// user.submit.addEventListener('click', prefHandler, true);
 
-var beers = []; // array for beer objects
-function Beer(style, color, abv, bitter, idNum) { // beer object constructor
-    this.style = style; // string name eg 'IPL'
+var beers = [];
+function Beer(style, color, abv, bitter, idNum) {
+    this.style = style;
     this.idNum = idNum;
-    this.color = color; // 2 element array with [min, max] values
-    this.abv = abv; // 2 element array with [min, max] values
-    this.bitterness = bitter;// 2 element array with [min, max] values
-    // this.image = image;
-    // this.example = examples;
+    this.color = color; 
+    this.abv = abv; 
+    this.bitterness = bitter;
 
     beers.push(this);
 }
 
-Beer.prototype.isInRange = function(parameter, min, max) { // parameter(string), min & max(numbers)
-    // is there a way to make this outside of the constuctor? 
-    if (min <= this[parameter] && this[parameter] <= max) { // if the beer's value for the given property is 
-        return true; // between the desired min and max values,
-    } // return true, otherwise return false.
+Beer.prototype.isInRange = function(parameter, min, max) {
+    if (min <= this[parameter] && this[parameter] <= max) { 
+        return true;
+    }
     return false;
 };
 
-function compileBeers() { // use Beer constructor to put beers and their properties into beer array
-    // for(var i = 0; i < styles.length; i++) { // repeat for all styles
-    //     beers[i] = new this.Beer(styles[i], idNums[i], colors[i], abvs[i], bitternesses[i], examples[i]);
-    // }
-
-    //                      name              color  abv  bitt  ID
+function compileBeers() {
+    
     new Beer('Belgian Dark Strong Ale', '4', '5', '2', '0');
     new Beer('Lite American Lager', '1', '2', '1', '1');
     new Beer('American Lager', ' 1', '3', '1', '2');
@@ -205,8 +188,6 @@ function compileBeers() { // use Beer constructor to put beers and their propert
     new Beer('Belgian Tripel', '2', '5', '2', '81');
 }
 
-
-/*main object literal, holding beer object array, methods to sort, and methods to push to local storage*/
 var database = {
     color_abv: [],
     color_bitterness: [],
@@ -215,11 +196,9 @@ var database = {
 
    elNewBeers: document.getElementById('button'),
 
-
-
-    findBeersWithin: function(parameter, min, max) { // finds all beers within the given parameters and returns their (styles or ids?) in an array
-        var goodBeers = []; // I'm thinking the array should hold idNum or style for better processing
-        for (var i = 0; i < beers.length; i++) { // When the final beers are 
+    findBeersWithin: function(parameter, min, max) {
+        var goodBeers = [];
+        for (var i = 0; i < beers.length; i++) { 
             if (beers[i].isInRange(parameter, min, max)) {
                 goodBeers.push(beers[i].idNum);
             }
@@ -227,7 +206,7 @@ var database = {
         return goodBeers;
     },
 
-    findBeersWithinBoth: function(parameterA, parameterB) { // finds all beers that share two parameters and returns an array holding each beer object (or id num?)
+    findBeersWithinBoth: function(parameterA, parameterB) {
         var goodBeersA,
             goodBeersB,
             goodBeersAB = [],
@@ -297,7 +276,7 @@ var database = {
         elChoice.appendChild(elH5);
 
         var elUl = document.createElement('ul');
-        
+
         var elLi = document.createElement('li');
         elLi.innerText = 'Color: ' + beer.color;
         elUl.appendChild(elLi);
@@ -311,10 +290,6 @@ var database = {
         elUl.appendChild(elLi);
 
         elChoice.appendChild(elUl);
-
-        // var elImage = document.createElement('img');
-        // elImage.setAttribute( 'src', beer.image);
-        // elChoice.appendChild(elImage);
     },
 
     getChoices: function (){
@@ -434,8 +409,6 @@ var database = {
             elPrevHead.innerText = ( 'Preference ' + (user.thisUserPrevPrefs.length - index) );
             elSubContainer.appendChild(elPrevHead);
 
-
-
             var elPreferencesDiv = document.createElement('div');
             elPreferencesDiv.setAttribute('class', 'previous-beer-preferences');
                 var elPColor = document.createElement('p');
@@ -494,11 +467,7 @@ var database = {
             this.displayPreviousInstance(i, elPastResults);
         }
     }
-
-
 };
-
-
 
 function onRunOutput() {
     user.getPreviousNames();
